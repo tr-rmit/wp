@@ -1,5 +1,5 @@
 <?php 
-  $title = "Booking";
+  $title = "Home";
   // this helps to eliminate CSS caching issues
   $lastModTime = filemtime("style.css"); 
 ?>
