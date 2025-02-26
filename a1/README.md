@@ -1,3 +1,2 @@
 # Assessment 1
-https://jupiter.csit.rmit.edu.au/~s1234567/wp
-https://github.com/s1234567/wp
+This is the file where you will have to provide a link to your project on the RMIT webserver
