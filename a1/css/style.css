@@ -1,0 +1,13 @@
+div#wrapper {
+  width: 1000px;
+  margin: auto;
+}
+
+header {
+  color: white;
+  background-color: black
+}
+
+footer {
+  border-top: 1px solid black;
+}
