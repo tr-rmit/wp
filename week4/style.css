@@ -1,0 +1,32 @@
+@import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&family=Permanent+Marker&family=Rokkitt:ital,wght@0,100..900;1,100..900&display=swap');
+
+
+@import url("https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=close,home,search"); 
+
+h1 {
+  color: #c42dc4;
+  font-size:40pt; 
+  font-weight:bold; 
+  font-style:italic; 
+  font-family: "Rokkitt", Verdana, serif;
+}
+h1#myhome{
+  font-family: "Permanent Marker", Helvetica, sans-serif;
+  letter-spacing: 2px;
+}
+p {
+  color: blue;
+  font-weight: bold;
+  font-family: "Newsreader", Geneva, Tahoma, sans-serif;
+  font-size: 16pt;
+  line-height: 130%;
+}
+p#p1{
+  font-family: "Times New Roman";
+}
+p#p2{
+  font-family: Georgia;
+}
+p#p3{
+  font-family: Cambria;
+}
