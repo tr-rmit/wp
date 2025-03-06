@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>Pseudo-classes</title>
+	<meta charset=utf-8>
+	<style>
+		/* pseudo-classes OLD SCHOOL 
+		nav a {
+			display: inline-block;
+			padding: 5px 10px;
+			border: 2px blue solid;
+			border-radius: 5px;
+		}
+		nav a:link, nav a:visited {
+			color: navy;
+		}
+
+		nav a:hover, nav a:active, nav a:focus {
+			color: red;
+			border-color: #900;
+		}
+		*/
+    nav a {
+			display: inline-block;
+			padding: 5px 10px;
+			border: 2px blue solid;
+			border-radius: 5px;
+
+			&:link, &:visited {
+				color: navy;
+			}
+      &:hover, &:active, &:focus {
+				color: red;
+				border-color: #900;
+			}
+
+		}
+
+	  	
+
+	</style>
+</head>
+
+<body>
+	<h1>Pseudo-classes</h1>
+	<nav>
+		<a href="http://www.google.com">Google </a>
+		<a href="http://www.amazon.com">Amazon </a>
+		<a href="http://www.rmit.edu.au">RMIT University</a>
+	</nav>
+</body>
+
+</html>
