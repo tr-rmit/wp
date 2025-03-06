@@ -1,0 +1,24 @@
+body {
+  color: green;
+  background-color: #fff8f0;
+}
+h1 {
+  color: #cc6600;
+  font-size:36pt;
+  font-weight: bold;
+  font-style: italic;
+  font-family: Arial;			
+}
+h1#justonmyhomepage {
+  font-family: "Comic Sans MS";
+}
+p {
+  color: #4b2500; 
+  font-weight: bold; 
+  font-family: Verdana; 
+  font-size: 20pt;
+  line-height: 30pt;
+}
+label + span {
+  color: red;
+}
