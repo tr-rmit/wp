@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ex04</title>
+  <script src="js05.js"></script>
+  <script>
+    
+  </script>
+  <style>
+    table, th, td {
+      border: thin solid #ccc;
+      border-collapse: collapse;
+    }
+    th, td {
+      padding: 5px 10px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Exercise 5 Planet Array and Objects</h1>
+  <h2>Planet Array</h2>
+  <ol>
+  <script>
+    for(let i=0; i<planetsArr.length; i++) {
+      document.write("<li>"+planetsArr[i]+"</li>");
+    }
+  </script>
+  </ol>
+  <h2>Planet Table</h2>
+  <table>
+    <script>
+      let headings = Object.keys(planetsObjs[0]);
+      console.log(headings);  
+      document.write("<tr>");
+      for (let i = 0; i < headings.length; i++) {
+        document.write("<th>"+headings[i]+"</th>");
+      }
+      document.write("</tr>");
+      for (let i = 0; i < planetsObjs.length; i++) {
+        document.write("<tr>");
+        for(let p in planetsObjs[i]) {
+          document.write("<td>" + planetsObjs[i][p] + "</td>");
+        }
+        document.write("</tr>");
+      }
+    </script>
+  </table>
+
+
+
+</body>
+</html>
