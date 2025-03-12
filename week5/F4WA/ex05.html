@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Week 5 Ex05</title>
+  <script>
+
+  </script>
+  <script src="js05.js"></script>
+  <style>
+    table,
+    th,
+    td {
+      border: thin solid #ccc;
+      border-collapse: collapse;
+    }
+  
+    th,
+    td {
+      padding: 5px 10px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Simple and Complex Planet Lists</h1>
+  <ol>
+    <script>
+      for(let i=0; i<pSA.length; i++) {
+        document.write("<li>"+pSA[i]+"</li>");
+      }
+    </script>
+  </ol>
+
+  <table>
+    <script>
+      let headings = Object.keys(pCA[0]);
+      console.log(headings);
+      document.write("<tr>");
+      for(let i=0; i<headings.length; i++){
+        document.write("<th>"+headings[i]+"</th>");
+      }
+      document.write("</tr>");
+
+      for (let i=0; i<pCA.length; i++) {
+        document.write("<tr>");
+        for (let p in pCA[i]) {
+          document.write("<td>" + pCA[i][p] + "</td>");
+        }
+        document.write("</tr>");
+      }
+    </script>
+  </table>
+</body>
+</html>

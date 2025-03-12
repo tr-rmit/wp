@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ex05</title>
+  <script src="js05.js"></script>
+  <script>
+
+  </script>
+  <style>
+    table,
+    th,
+    td {
+      border: thin solid #ccc;
+      border-collapse: collapse;
+    }
+  
+    th,
+    td {
+      padding: 5px 10px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Simple Planets List</h1>
+  <ol>
+    <script>
+      for(let i=0; i<planetList.length; i++) {
+        document.write("  <li>"+planetList[i]+"</li>\n");
+      }
+    </script>
+  </ol>
+  <hr>
+  <h1>Object Planets Table</h1>
+  <table>
+    <script>
+      let headings = Object.keys(planetObjects[0]);
+      console.log(headings); 
+      document.write("<tr>");
+      for(let i=0; i<headings.length; i++) {
+        document.write("<th>"+headings[i]+"</th>");
+      }
+      document.write("</tr>");
+      for (let i=0; i<planetObjects.length; i++) {
+        document.write("<tr>");
+        for(let col in planetObjects[i]) {
+          document.write("<td>" + planetObjects[i][col] + "</td>");
+        }
+        document.write("</tr>");
+      }
+    </script>
+  </table>
+  
+</body>
+</html>
