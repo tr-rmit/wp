@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Week 5 Ex05</title>
+  <script src="js05.js"></script>
+  <script>
+
+  </script>
+  <style>
+    table,
+    th,
+    td {
+      border: thin solid #ccc;
+      border-collapse: collapse;
+    }
+  
+    th,
+    td {
+      padding: 5px 10px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Simple and Complex Planets Info</h1>
+  <h2>Simple Planet Array</h2>
+  <ul>
+    <script>
+      for(let i=0; i<simplePlanets.length; i++) {
+        document.write("<li>" + simplePlanets[i]+ "</li>");
+      }
+    </script>
+  </ul>
+  <h2>Complex 2D Planet Info Array</h2>
+  <table>
+    <script>
+      let headings = Object.keys(complexPlanets[0]);
+      console.log(headings);
+      document.write("<tr>");
+      for(let i=0; i<headings.length; i++) {
+        document.write("<th>" + headings[i] + "</th>");
+      }
+      document.write("</tr>");
+
+      for(let i=0; i<complexPlanets.length; i++) {
+        document.write("<tr>");
+        for(let p in complexPlanets[i]) {
+          document.write("<td>" + complexPlanets[i][p] + "</td>");
+        } 
+        document.write("</tr>");
+      }
+
+    </script>
+  </table>
+
+</body>
+</html>
