@@ -1,4 +1,5 @@
 <?php
+
   ini_set('display_errors', 1); 
   error_reporting(E_ALL);
   $simpleArray = [1,2,3,4,5,6,7,8,9];
@@ -9,7 +10,6 @@
   ];
 ?>
 
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,7 +19,7 @@
 </head>
 <body>
   <h1>EX06</h1>
-  <p><?= $simpleArray[9] ?></p>
+  <p><?= $simpleArray[5] ?></p>
   <ul>
 <?php 
     $length = count($simpleArray);
@@ -27,9 +27,10 @@
       echo "    <li> $i => $simpleArray[$i] </li>\n";
     }
   ?>  </ul>
-  <ul><?php 
+  <ul>
+<?php 
     foreach ($assocArray as $name => $age) {
-      echo "<li> $name => $age </li>";
+      echo "    <li> $name => $age </li>\n";
     }
   ?></ul>
 </body>
