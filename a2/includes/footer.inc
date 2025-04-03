@@ -13,6 +13,11 @@
       preshow($_POST);
       ?>
 
+      <h4>FILES</h4>
+      <?php
+      preshow($_FILES);
+      ?>
+
       <h4>SESSION</h4>
       <?php
       preshow($_SESSION);

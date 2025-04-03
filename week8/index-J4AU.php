@@ -13,16 +13,16 @@
   <tr>
     <th>Id</th><th>Name</th><th>Description</th><th>Image</th><th>Caption</th>
   </tr>
-
 <?php 
   $countries = mysqli_query($conn, "select * from country");
+
   while($row = mysqli_fetch_assoc($countries)) {
     // preshow($row);
-    echo "<tr>";
+    echo "  <tr>\n";
     foreach($row as $colvalue) {
-      echo "<td>$colvalue</td>";
+      echo "    <td>$colvalue</td>\n";
     }
-    echo "</tr>";
+    echo "  </tr>\n";
   }
 ?>
 
