@@ -13,7 +13,7 @@ if (strstr($_SERVER['SERVER_NAME'], 'localhost')) {
 } else {
   $servername = "talsprddb02.int.its.rmit.edu.au";
   $username = "e54061";
-  $password = "/home/eh1/e54061/public_html/.htdb_pass";
+  include("/home/eh1/e54061/public_html/.htdb_pass");
   $dbname = "e54061";
 }
 // Create connection
