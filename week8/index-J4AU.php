@@ -13,7 +13,7 @@
   <tr>
     <th>Id</th><th>Name</th><th>Description</th><th>Image</th><th>Caption</th>
   </tr>
-<?php 
+<?php
   $countries = mysqli_query($conn, "select * from country");
 
   while($row = mysqli_fetch_assoc($countries)) {
@@ -27,6 +27,5 @@
 ?>
 
   </table>
-
 </body>
 </html>
