@@ -26,7 +26,7 @@ if ($conn->connect_error) {
 function preshow($var) {
   echo '<pre>';
   if (empty($var)) {
-    echo 'No data';
+    echo 'No data here';
   } else {
     print_r($var);
   }
