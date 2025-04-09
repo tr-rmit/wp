@@ -1,0 +1,21 @@
+nav {
+  background-color: #456;
+  color: white;
+
+  a {
+    display: inline-block;
+    color:white;
+    padding:20px;
+
+    &:hover {
+      background-color: #FFF4;
+    }
+  }
+}
+
+#Homepage h1 {
+  font-family: "Ridiculous fancy font";
+}
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Normal fancy font";
+}
