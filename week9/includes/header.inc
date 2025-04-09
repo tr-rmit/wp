@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="css/style.css">
   <title>Countries R Us | <?= $title ?></title> 
 </head>
-<body id="<?= str_replace(" ","",$title) ?>page">
+<body id="<?= strtolower(str_replace(" ","",$title)) ?>page">
   <header>
 <?php include('includes/nav.inc'); ?>
   </header>

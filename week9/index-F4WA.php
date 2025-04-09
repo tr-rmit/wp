@@ -1,5 +1,5 @@
 <?php 
-  $title = 'My Gallery';
+  $title = 'Home';
   include('includes/header.inc'); 
 ?>
 <main>
@@ -23,7 +23,6 @@
     echo "  </tr>\n";
   }
   //preshow($rows);
-
 
 ?>  
 </table>
