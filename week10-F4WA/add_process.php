@@ -43,12 +43,9 @@
     die();
   }
 
-
- 
-
   if ($stmt->affected_rows > 0) {
     echo '<p>New record successfully inserted into the database</p>';
-    if (move_uploaded_file($imageTemp, 'images/' . $imageName)) {
+    if (move_uploaded_file($imageTemp, 'userimages/'.$imageName)) {
       echo "<p>Image moved to folder</p>";
     } else {
       echo "<p>Image not moved to folder</p>";
