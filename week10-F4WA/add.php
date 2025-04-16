@@ -5,9 +5,9 @@
 <main>
   <h1>Add Country</h1>
 
-  <form method="post" action="add.php"  enctype="multipart/form-data">
+  <form method="post" action="add_process.php"  enctype="multipart/form-data">
     <p><label>Country Name<br>
-      <input type="text" placeholder="Country Name" id="name" name="name">
+      <input type="text" placeholder="Country Name" id="name" name="countryname">
     </label></p>
     <p><label>Description<br>
       <textarea placeholder="Describe the Country" id="description" name="description"></textarea>
