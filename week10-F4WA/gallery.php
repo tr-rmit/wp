@@ -14,7 +14,7 @@
     echo <<<"CDATA"
     <div class="gallery-item">
       <h3>{$row['countryname']}</h3>
-      <img src="images/{$row['image']}" alt="{$row['caption']}">
+      <img src="userimages/{$row['image']}" alt="{$row['caption']}">
       <p><a href="country.php?countryid={$row['countryid']}">Read More</a></p>
     </div>
 

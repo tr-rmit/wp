@@ -17,7 +17,7 @@
     echo <<<"MINECRAFT"
       <tr>
         <td><a href="country.php?countryid={$row['countryid']}">{$row['countryname']}</a></td>
-        <td><img width="100" src="images/{$row['image']}" alt="{$row['caption']}"></td>
+        <td><img width="100" src="userimages/{$row['image']}" alt="{$row['caption']}"></td>
         <td>{$row['caption']}</td>
       </tr>
 
