@@ -20,6 +20,17 @@ div#gallery {
   text-align: center;
 }
 
+table#modifytable {
+  border: ridge 8px #456;
+  margin: 30px;
+  border-collapse: collapse;
+
+  th, td {
+    padding: 10px 15px;
+    border: dashed 1px #456;
+  }
+}
+
 div.gallery-item {
   display: inline-block;
   border: ridge 4px #456;
