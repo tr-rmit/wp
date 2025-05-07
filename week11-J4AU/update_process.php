@@ -1,12 +1,20 @@
 <?php 
 
-  // Check the "order", does it make sense
+  // Check the "order", does it make sense?
 
+  // 1. Is there POST data? Redirect to modify table if not
   if (empty($_POST)) {
-    die("no POST data"); // consider header("Location: modify_table.php");
+    header("Location: modify_table.php");
   }
-  $imageName = '';
-  $imageTemp = '';
+
+  // 2. Set up some empty variables we will need later
+  $newImageName = '';
+  $tmpImageName = '';
+  $oldImageName = '';
+  $sql = '';
+  $bind_param = '';
+
+  // 3. If there is an image we need the old image name from the database
   if (!empty($_FILES['image']['name'])) {
     if($_FILES['image']['error']!=0) {
       die('file upload error');
@@ -15,20 +23,35 @@
     } else if($_FILES['image']['size'] > 500000) {
       die('image too big!');
     }
-    $imageName = $_FILES['image']['name'];
-    $imageTemp = $_FILES['image']['tmp_name'];
-    // sql for image upload
-  } else {
-    // sql without image upload
+    // 3.1. new image is ok! 
+    $newImageName = $_FILES['image']['name'];
+    $tmpImageName = $_FILES['image']['tmp_name'];
+
   }
 
-  // If you get to this point, there is POST and the image passes checks
+  // 4. At this stage, we have no image OR enough image details needed to perform an update, let's start creating a HTML page
 
   include("includes/header.inc");
 
+  // 5. Read the existing record in the database to get old image name
+  $sql = "select image from country where countryid=?";
+  $stmt = $conn->prepare($sql);
+  if (!$stmt) {
+    exit("prepare failed: " . $conn->error);
+  }
+  $stmt->bind_param("i", $countryid);
+  $stmt->execute();
+  $records = $stmt->get_result();
+  if ($records->num_rows > 0) {
+    foreach ($records as $row) {
+      $oldImageName = $row['image'];
+    }
+  }
+  
+  // 6. Put POST data into variables with same name as key
   foreach ($_POST as $key => $val) {
     $$key = trim(htmlentities($val));
-    /*
+    /* eg
     $countryname = 'Bulgaria'
     $description = 'Im sure its nice'
     $caption = 'Local Festival'
@@ -36,25 +59,21 @@
     */
   }
 
-
-
-/* enough has gone right to justify a page creation
-  echo "All good on line 33";
-  
-  include("includes/header.inc");
-
-  $sql = "INSERT INTO country(countryname, description, image, caption) VALUES (?,?,?,?)";
+  // 7. This is a bit of a hack: we are not updating the image name if it doesn't exist, but rather than write two separate SQL statements, we will use the old image name in an update if a new image name does not exist
+  if (empty($newImageName)) 
+    $newImageName = $oldImageName;
+  $sql = "UPDATE country SET countryname=?, description=?, image=?, caption=? WHERE countryid=?";
   $stmt = $conn->prepare($sql);
   if (!$stmt) {
     die("An error occurred - could not prepare");
   } 
-  $stmt->bind_param("ssss", $countryname, $description, $imageName, $caption);
+  $stmt->bind_param("ssssi", $countryname, $description, $newImageName, $caption, $countryid);
   $stmt->execute();
  
   if (!empty($stmt->errno)) {
     printf("Error: %d.\n", $stmt->errno);
     die();
-  } */
+  }
 ?>
 
 <main>
