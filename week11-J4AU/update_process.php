@@ -74,6 +74,25 @@
     printf("Error: %d.\n", $stmt->errno);
     die();
   }
+
+  // 8. If the record was updated ... 
+  if ($stmt->affected_rows > 0) {
+    echo "<p>Record $countryname updated<p>";
+  // ... AND there is a temp image waiting in $_FILES
+  if (!empty($tmpImageName)) {
+  // ... make sure the old file actually exists
+      if (file_exists('images/' . $oldImageName)) {
+  // remove old file
+        unlink('images/' . $oldImageName);
+      }
+  // Upload new image
+      if (move_uploaded_file($tmpImageName, 'images/' . $newImageName)) {
+        echo "Image moved to folder";
+      } else {
+        echo "Image not moved to folder";
+      }
+    }
+  }
 ?>
 
 <main>
