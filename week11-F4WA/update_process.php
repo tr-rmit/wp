@@ -30,28 +30,11 @@
   $title = "Process Image";
   include("includes/header.inc");
 
-  // 5. Read the existing record in the database to get old image name
-  $sql = "select image from country where countryid=?";
-  $stmt = $conn->prepare($sql);
-  if (!$stmt) {
-    exit("prepare failed: " . $conn->error);
-  }
-  $stmt->bind_param("i", $countryid);
-  $stmt->execute();
-  $records = $stmt->get_result();
-  if ($records->num_rows > 0) {
-    foreach ($records as $row) {
-      $oldImageName = $row['image'];
-      echo ("Debug: $oldImageName");
-    } 
-  } else {
-    die("Could not find that country! Even though it was in the form ...  weird?");
-  }
-  
   // 6. Put POST data into variables with same name as key
   foreach ($_POST as $key => $val) {
     $$key = trim(htmlentities($val));
     /* eg
+    $countryid = 6
     $countryname = 'Bulgaria'
     $description = 'Im sure its nice'
     $caption = 'Local Festival'
@@ -59,14 +42,36 @@
     */
   }
 
+  // 5. Read the existing record in the database to get old image name
+  $sql = "select image from country where countryid=?";
+  $stmt = $conn->prepare($sql);
+  if (!$stmt) {
+    exit("prepare failed: " . $conn->error);
+  }
+  //preshow($countryid);
+  $stmt->bind_param("i", $countryid);
+  $stmt->execute();
+  $records = $stmt->get_result();
+  if ($records->num_rows > 0) {
+    foreach ($records as $row) {
+      $oldImageName = $row['image'];
+      //echo ("Debug: $oldImageName");
+    } 
+  } else {
+    //preshow($_POST);
+    //die("Could not find that country! Even though it was in the form ...  weird?");
+  }
+  
+
+
 ?>
 
 <main>
 
 <?php
   // 7. This is a bit of a hack: we are not updating the image name if it doesn't exist, but rather than write two separate SQL statements, we will use the old image name in an update if a new image name does not exist
-  print_r($oldImageName.' :-> '.$newImageName);
-  if (empty($newImageName) && !empty($oldImageName)) 
+  //print_r($oldImageName.' :-> '.$newImageName);
+  if (empty($newImageName)) 
     $newImageName = $oldImageName;
   $sql = "UPDATE country SET countryname=?, description=?, image=?, caption=? WHERE countryid=?";
   $stmt = $conn->prepare($sql);
