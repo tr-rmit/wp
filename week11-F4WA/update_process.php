@@ -27,7 +27,7 @@
   }
 
   // 4. At this stage, we have no image OR enough image details needed to perform an update, let's start creating a HTML page
-
+  $title = "Process Image";
   include("includes/header.inc");
 
   // 5. Read the existing record in the database to get old image name
@@ -42,7 +42,10 @@
   if ($records->num_rows > 0) {
     foreach ($records as $row) {
       $oldImageName = $row['image'];
-    }
+      echo ("Debug: $oldImageName");
+    } 
+  } else {
+    die("Could not find that country! Even though it was in the form ...  weird?");
   }
   
   // 6. Put POST data into variables with same name as key
@@ -62,7 +65,8 @@
 
 <?php
   // 7. This is a bit of a hack: we are not updating the image name if it doesn't exist, but rather than write two separate SQL statements, we will use the old image name in an update if a new image name does not exist
-  if (empty($newImageName)) 
+  print_r($oldImageName.' :-> '.$newImageName);
+  if (empty($newImageName) && !empty($oldImageName)) 
     $newImageName = $oldImageName;
   $sql = "UPDATE country SET countryname=?, description=?, image=?, caption=? WHERE countryid=?";
   $stmt = $conn->prepare($sql);
