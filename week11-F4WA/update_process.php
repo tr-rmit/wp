@@ -83,12 +83,12 @@
   // ... AND there is a temp image waiting in $_FILES
   if (!empty($tmpImageName)) {
   // ... make sure the old file actually exists
-      if (file_exists('images/' . $oldImageName)) {
+      if (file_exists('userimages/' . $oldImageName)) {
   // remove old file
-        unlink('images/' . $oldImageName);
+        unlink('userimages/' . $oldImageName);
       }
   // Upload new image
-      if (move_uploaded_file($tmpImageName, 'images/' . $newImageName)) {
+      if (move_uploaded_file($tmpImageName, 'userimages/' . $newImageName)) {
         echo "Image moved to folder";
       } else {
         echo "Image not moved to folder";
