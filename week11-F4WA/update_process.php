@@ -27,7 +27,7 @@
   }
 
   // 4. At this stage, we have no image OR enough image details needed to perform an update, let's start creating a HTML page
-  $title = "Process Image";
+  $title = "Update Country";
   include("includes/header.inc");
 
   // 6. Put POST data into variables with same name as key
@@ -61,8 +61,6 @@
     //preshow($_POST);
     //die("Could not find that country! Even though it was in the form ...  weird?");
   }
-  
-
 
 ?>
 
@@ -103,6 +101,8 @@
         echo "Image not moved to folder";
       }
     }
+  } else {
+    echo "<p>Record $countryname NOT updated<p>";
   }
 
 ?>
