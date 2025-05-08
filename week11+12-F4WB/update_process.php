@@ -1,107 +1,116 @@
 <?php 
+
+  // Check the "order", does it make sense?
+
+  // 1. Is there POST data? Redirect to modify table if not
   if (empty($_POST)) {
-    die("no POST data"); // redirect user to the form
+    header("Location: modify_table.php");
   }
-  $imageName = '';
-  $imageTemp = '';
-  $imageOld = '';
-  if (!empty($_FILES['image']['name']) && !empty($_FILES['image']['tmp_name']) ) {
-    echo "<p>Not empty $imageName | $imageOld</p>";
+
+  // 2. Set up some empty variables we will need later
+  $newImageName = '';
+  $tmpImageName = '';
+  $oldImageName = '';
+
+  // 3. If there is an image we need the old image name from the database
+  if (!empty($_FILES['image']['name'])) {
     if($_FILES['image']['error']!=0) {
-      die('file upload error'); // not sure what to do here
+      die('file upload error');
     } else if(!preg_match("#^image/#",$_FILES['image']['type'])) {
-      die('not an image'); // redirect user to the form
+      die('not an image');
     } else if($_FILES['image']['size'] > 500000) {
       die('image too big!');
-    }  
-    $imageName = htmlentities(trim($_FILES['image']['name']));
-    $imageTemp = htmlentities(trim($_FILES['image']['tmp_name']));
+    }
+    // 3.1. new image is ok! 
+    $newImageName = trim(htmlentities($_FILES['image']['name']));
+    $tmpImageName = trim(htmlentities($_FILES['image']['tmp_name']));
   }
-  $title='Modify Existing';
-  include('includes/header.inc');
 
-  $sql = "select countryname, image from country where countryid=?";
-  
+  // 4. At this stage, we have no image OR enough image details needed to perform an update, let's start creating a HTML page
+  $title = "Update Country";
+  include("includes/header.inc");
+
+  // 6. Put POST data into variables with same name as key
+  foreach ($_POST as $key => $val) {
+    $$key = trim(htmlentities($val));
+    /* eg
+    $countryid = 6
+    $countryname = 'Bulgaria'
+    $description = 'Im sure its nice'
+    $caption = 'Local Festival'
+    $<script>Give me your password</script> = '&lt;script&gt;&lt;/script&gt;'
+    */
+  }
+
+  // 5. Read the existing record in the database to get old image name
+  $sql = "select image from country where countryid=?";
   $stmt = $conn->prepare($sql);
-  //echo "<p>hello2</p>";
   if (!$stmt) {
     exit("prepare failed: " . $conn->error);
   }
+  //preshow($countryid);
   $stmt->bind_param("i", $countryid);
   $stmt->execute();
   $records = $stmt->get_result();
   if ($records->num_rows > 0) {
     foreach ($records as $row) {
-      preshow($row);
-      $countryname = $row['countryname'];
-      $imageOld = $row['image'];
-    }
-  }
-  echo "<p>$imageName | $imageOld</p>";
-  if (empty($imageName)) {
-    $imageName = $imageOld;
-  }
-  echo "<p>$imageName | $imageOld</p>";
-  
-  
-  // If you get to this point, there is POST and the image (if one was submitted) passes checks
-  foreach ($_POST as $key => $val) {
-    $$key = htmlentities(trim($val));
+      $oldImageName = $row['image'];
+      //echo ("Debug: $oldImageName");
+    } 
+  } else {
+    //preshow($_POST);
+    //die("Could not find that country! Even though it was in the form ...  weird?");
   }
 
-  echo $imageName;
-  $sql = "UPDATE country SET countryname=?, description=?,image=?, caption=? WHERE countryid=?";
+?>
+
+<main>
+
+<?php
+  // 7. This is a bit of a hack: we are not updating the image name if it doesn't exist, but rather than write two separate SQL statements, we will use the old image name in an update if a new image name does not exist
+  //print_r($oldImageName.' :-> '.$newImageName);
+  if (empty($newImageName)) 
+    $newImageName = $oldImageName;
+  $sql = "UPDATE country SET countryname=?, description=?, image=?, caption=? WHERE countryid=?";
   $stmt = $conn->prepare($sql);
   if (!$stmt) {
-    die("An error occurred - could not prepare: ".$conn->error);
+    die("An error occurred - could not prepare");
   } 
-  // update code
-  $stmt->bind_param("ssssi", $countryname, $description, $imageName, $caption, $countryid);
+  $stmt->bind_param("ssssi", $countryname, $description, $newImageName, $caption, $countryid);
   $stmt->execute();
-
+ 
   if (!empty($stmt->errno)) {
     printf("Error: %d.\n", $stmt->errno);
     die();
   }
 
-?>
-
-  <main>
-    <h1>Country Insertion</h1>
-
-<?php
+  // 8. If the record was updated ... 
   if ($stmt->affected_rows > 0) {
     echo "<p>Record $countryname updated<p>";
-
-/* old compulsory file code 
-    if (move_uploaded_file($imageTemp, 'userimages/'.$imageName)) {
-      echo "<p>Image moved to userimages folder</p>"; 
-    } else {
-      echo "<p>Image NOT moved to userimages folder</p>";
-    }
-*/
-  
-    if ($imageOld != $imageName) {
-      //Delete old image
-      if (file_exists('userimages/' . $imageOld)) {
-        unlink('userimages/' . $imageOld);
-        echo "<p>$imageOld removed folder</p>";
+  // ... AND there is a temp image waiting in $_FILES
+  if (!empty($tmpImageName)) {
+  // ... make sure the old file actually exists
+      if (file_exists('userimages/' . $oldImageName)) {
+  // remove old file
+        unlink('userimages/' . $oldImageName);
       }
-      //Upload new one
-      if (move_uploaded_file($imageTemp, 'userimages/' . $imageName)) {
-        echo "<p>$imageName placed in folder</p>";
+  // Upload new image
+      if (move_uploaded_file($tmpImageName, 'userimages/' . $newImageName)) {
+        echo "Image moved to folder";
       } else {
-        echo "<p>$imageName NOT moved to folder</p>";
+        echo "Image not moved to folder";
       }
     }
-
   } else {
-    echo '<p>Record not inserted into the database</p>';
+    echo "<p>Record $countryname NOT updated<p>";
   }
+
 ?>
- 
-  <p><a href="gallery.php">Click here to go back to the gallery</a></p>
 
-  </main>
+<p><a href="gallery.php">Click here to go back to the gallery</a></p>
 
-<?php include('includes/footer.inc'); ?>
+</main>
+
+<?php  
+  include("includes/footer.inc");
+?>

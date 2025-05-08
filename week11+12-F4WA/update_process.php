@@ -22,8 +22,8 @@
       die('image too big!');
     }
     // 3.1. new image is ok! 
-    $newImageName = $_FILES['image']['name'];
-    $tmpImageName = $_FILES['image']['tmp_name'];
+    $newImageName = trim(htmlentities($_FILES['image']['name']));
+    $tmpImageName = trim(htmlentities($_FILES['image']['tmp_name']));
   }
 
   // 4. At this stage, we have no image OR enough image details needed to perform an update, let's start creating a HTML page
@@ -107,10 +107,10 @@
 
 ?>
 
+<p><a href="gallery.php">Click here to go back to the gallery</a></p>
+
 </main>
 
 <?php  
   include("includes/footer.inc");
 ?>
-
-
