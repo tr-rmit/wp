@@ -32,12 +32,12 @@
   $title='Add More';
   include('includes/header.inc');
 
-  $sql = "INSERT INTO country(countryname, description, image, caption) VALUES (?,?,?,?)";
+  $sql = "INSERT INTO country(countryname, username, description, image, caption) VALUES (?,?,?,?,?)";
   $stmt = $conn->prepare($sql);
   if (!$stmt) {
     die("An error occurred - could not prepare");
   } 
-  $stmt->bind_param("ssss", $countryname, $description, $imageName, $caption);
+  $stmt->bind_param("sssss", $countryname, $_SESSION['user']['username'], $description, $imageName, $caption);
   $stmt->execute();
 
   if (!empty($stmt->errno)) {
