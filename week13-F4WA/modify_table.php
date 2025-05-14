@@ -1,10 +1,11 @@
 <?php 
-  $title='Modify Table';
-  include('includes/header.inc');
+  session_start();
   if (empty($_SESSION['user'])) {
     header("Location: login.php");
     exit();
   }
+  $title='Modify Table';
+  include('includes/header.inc');
 ?>
 
 <main>

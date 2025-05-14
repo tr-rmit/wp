@@ -1,4 +1,5 @@
 <?php 
+    session_start();
     if (empty($_SESSION['user'])) {
       header("Location: login.php");
       exit();
@@ -18,11 +19,17 @@
   // 3. If there is an image we need the old image name from the database
   if (!empty($_FILES['image']['name'])) {
     if($_FILES['image']['error']!=0) {
-      die('file upload error');
+      $_SESSION['err'] = "That image failed to upload properly, can you try again?";
+      header("Location: update.php");
+      exit();
     } else if(!preg_match("#^image/#",$_FILES['image']['type'])) {
-      die('not an image');
+      $_SESSION['err'] = "That file was not an image, can you try again?";
+      header("Location: add.php");
+      exit();
     } else if($_FILES['image']['size'] > 500000) {
-      die('image too big!');
+      $_SESSION['err'] = "That file is too big, can you try again?";
+      header("Location: add.php");
+      exit();
     }
     // 3.1. new image is ok! 
     $newImageName = trim(htmlentities($_FILES['image']['name']));

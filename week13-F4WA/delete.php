@@ -1,4 +1,5 @@
-<?php 
+<?php
+  session_start(); 
   if (empty($_SESSION['user'])) {
     header("Location: login.php");
     exit();
@@ -40,9 +41,15 @@
   $stmt->bind_param("i", $countryid);
   $stmt->execute();
   if ($stmt->affected_rows > 0) {
+    $_SESSION['usrmsg'] = 'Record Deleted.';
     if (file_exists('userimages/' . $oldImageName)) {
       unlink('userimages/' . $oldImageName);
+      $_SESSION['usrmsg'] .= ' Original image removed.';
+    } else {
+      $_SESSION['usrmsg'] .= ' No previous image found.';
     }
-  } 
+  } else {
+    $_SESSION['err'] = 'Record not deleted, no images removed.';
+  }
 
   header("Location: modify_table.php");

@@ -3,7 +3,7 @@
   include('includes/header.inc');
 ?>
 
-<main>
+<main class="container">
 <h1>Countries R Us</h1>
 
   <table class="table table-striped table-bordered">
