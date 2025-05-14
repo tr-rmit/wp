@@ -1,14 +1,15 @@
 <?php 
+  include("includes/db_connect.inc");
+
   if(!empty($_SESSION['user']))
     unset($_SESSION['user']);
 
   // 1. Is there POST data? Redirect to login if not
   if (empty($_POST) || empty(trim($_POST['username'])) || empty(trim($_POST['password']))) {
-    header("Location: login.php");
+    $_SESSION['err'] = "Did you forget to type anything? Hint: yes you did";header("Location: login.php");
     exit();
   }
 
-  include("includes/db_connect.inc");
   $username = ''; 
   $password = ''; 
 
@@ -29,8 +30,10 @@
   // if someone already has that username and password, log them in, send them to home page!
   if ($result->num_rows > 0) {
     $_SESSION['user']['username'] = $username;
+    $_SESSION['usrmsg'] = "Login successfull, welcome back $username";
     header("Location: index.php");
   } else {
+    $_SESSION['err'] = "That username and password combination does not exist";
     header("Location: login.php");
   }
   $conn->close();
