@@ -11,8 +11,8 @@
 
   // 2. Because usernames are the unique primary key, need to check first!
   include("includes/db_connect.inc");
-  $username = '';
-  $password = '';
+  $username = ''; 
+  $password = ''; 
 
   foreach ($_POST as $name => $value) {
     $$name = htmlentities(trim($value));
@@ -20,7 +20,7 @@
     $username = $_POST['username'];
     $password = $_POST['password'];
     */
-  }
+  } 
 
   $sql = "select * from users where username = ?";
   $stmt = $conn->prepare($sql);
@@ -36,7 +36,6 @@
     exit();
   }  // 3.2. else if no one has that username, register them, send them to home page!
   else {
-
     $sql = "insert into users (username, password, reg_date) values (?, SHA(?), now())";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("ss", $username, $password);
