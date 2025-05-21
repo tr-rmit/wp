@@ -20,17 +20,23 @@ nav {
 div#masthead {
   display: flex;
   align-items: center;
-
+/* Commenting this out for jigsaw validation reasons
   @media only screen and (max-width: 1000px) {
-    & {
       display: block;
-    }
+  }
+*/
+}
+@media only screen and (max-width: 1000px) {
+  div#masthead {
+    display: block;
   }
 }
+
 div#featuredimages {
   width: 512px;
   height: 512px;
   text-shadow: 1px 1px 3px black;
+  margin: 0px auto;
 }
 div#featuredimages img {
   width: 512px;
@@ -47,6 +53,9 @@ div#gallery {
   margin: 30px;
   padding: 30px;
   text-align: center;
+}
+#secretmessage {
+  display: none;
 }
 
 table#modifytable {

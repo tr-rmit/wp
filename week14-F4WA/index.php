@@ -7,7 +7,7 @@
     // preshow($row);
     $rows[] = $row;
   }
-  preshow($rows);
+  //preshow($rows);
   //die();
 ?>
 
