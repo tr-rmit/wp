@@ -1,0 +1,47 @@
+Hi everyone in Trevor's classes,
+
+I had trouble recalling in class yesterday where the '%' signs are added in prepared statements. They should be added to the POSTed variable and not later on in the SQL:
+
+$gametype = '%'.$_POST['gametype'].'%';
+
+Plus I wanted to clarify what the sql and bind_params would be depending on the values of the 2 search fields: a text box and a drop down box.
+
+<input name='keyword'> and <select name='gametype'>
+
+In search.php, a processing script will expect $_POST['keyword'] and $_POST['gametype'], either of these can be blank BUT at least one of them must not be blank, going by the criteria at the bottom of page 3 of the assignment.
+
+So let's look at the possible cases:
+
+1) Both fields are blank
+
+Redirect user back to the page that has the form OR print a message saying this and invite them to try again.
+
+2) keyword is not blank, gametype is blank (ie search for all types, like the javascript search we covered in class)
+
+The SQL should be:
+
+"SELECT * FROM games WHERE (gamename like ? OR description like ?)"
+
+bind_param() parameters should be:
+
+('ss', $keyword, $keyword)
+
+3) keyword is blank, gametype is not blank
+
+The SQL should be:
+
+"SELECT * FROM games WHERE gametype = ?"
+
+bind_param() parameters should be:
+
+('s', $gametype)
+
+4) keyword and gametype is not blank
+
+The SQL should be:
+
+"SELECT * FROM games WHERE (gamename like ? OR description like ?) AND gametype = ?"
+
+bind_param() parameters should be:
+
+('sss', $keyword, $keyword, $gametype)
