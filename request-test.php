@@ -1,4 +1,5 @@
 <?php
+// * test commit: username not correct */
 error_reporting(0);
 if (isset($_GET['viewsource'])) {
   echo "<pre>\n";
