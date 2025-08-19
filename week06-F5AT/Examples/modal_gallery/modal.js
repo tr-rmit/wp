@@ -1,0 +1,14 @@
+document.addEventListener("DOMContentLoaded", function () {
+  const galleryImages = document.querySelectorAll(".thumb");
+  const modalImage = document.getElementById("modalImage");
+  const modalDesc = document.getElementById("modalDesc");
+
+  galleryImages.forEach(img => {
+    img.addEventListener("click", function () {
+      modalImage.src = this.src;
+      modalImage.alt = this.alt;
+      modalDesc.textContent = this.alt;
+
+    });
+  });
+});
