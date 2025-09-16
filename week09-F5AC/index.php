@@ -31,28 +31,23 @@ include('includes/header.inc');
 ?>    
     </table>
     <div id="gallery" class="container">
-      <div class="gallery-item row">
-        <div class="col-12 col-md-6 col-lg-4 text-center">
-          <h3>[[ title ]]</h3>
-          <img class="img-fluid img-thumbnail gallery-img" src="../images/[[ image ]]" width="160" height="45"
-              alt="[[ caption ]]" data-bs-toggle="modal" data-bs-target="#imageModal">
-          <p>[[ description ]]</p>
-        </div>
+      <div class="gallery-item col-12 col-md-6 col-lg-4 text-center">
+        <h3>[[ title ]]</h3>
+        <img class="img-fluid img-thumbnail gallery-img" src="../images/[[ image ]]" width="160" height="45" alt="[[ caption ]]" data-bs-toggle="modal" data-bs-target="#imageModal">
+        <p>[[ description ]]</p>
       </div>
-    </div>
+      
+    
 <?php  
 $countries = mysqli_query($conn, "select * from country");
 while($row = mysqli_fetch_assoc($countries)) {
   // preshow($row);
   echo <<<"CDATA"
-       <div class="gallery-item row">
-        <div class="col-12 col-md-6 col-lg-4 text-center">
+       <div class="gallery-item col-12 col-md-6 col-lg-4 text-center">
           <h3>{$row['countryname']}</h3>
-          <img class="img-fluid img-thumbnail gallery-img" src="../images/{$row['image']}" width="160" height="45"
-              alt="{$row['caption']}" data-bs-toggle="modal" data-bs-target="#imageModal">
+          <img class="img-fluid img-thumbnail gallery-img" src="../images/{$row['image']}" width="160" height="45" alt="{$row['caption']}" data-bs-toggle="modal" data-bs-target="#imageModal">
           <p>{$row['description']}</p>
         </div>
-      </div>
 
 CDATA;  
  
