@@ -6,16 +6,15 @@ include('includes/header.inc');
 ?>
   <main class="container">
     <h1><?= $title ?></h1>
-    
     <div id="gallery" class="row">
 <?php
     try {
-      $countries = mysqli_query($conn, "select * from country");  
+      $countries = mysqli_query($conn, "select * from country");
       // preshow($row);
     } catch (Exception $ex) {
       echo 'Error: ' .$ex->getMessage();
       die();
-    } 
+    }
     while($row = mysqli_fetch_assoc($countries)) {
 
       echo <<<"CDATA"
