@@ -1,10 +1,16 @@
 <?php
-  if (empty($_GET['countryid']) || empty($_SESSION['userid'])) {
+// divert "stray" customers back to the countries table
+  if (empty($_GET['countryid'])) {
     header("Location: index.php");
     exit();
   }
-  $countryid = htmlentities(trim($_GET['countryid']));
   include('includes/tools.inc');
+// divert anyone not logged in to the login form
+  if (empty($_SESSION['userid'])) {
+    header("Location: login.php");
+    exit();
+  }
+  $countryid = htmlentities(trim($_GET['countryid']));
   include('includes/db_connect.inc');
   $title = 'Update Country';
   include('includes/header.inc');

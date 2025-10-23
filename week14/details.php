@@ -1,13 +1,13 @@
 <?php
 // Step 1: redirect any "stray" customers
-if(empty($_GET['countryid'])) {
-  header("Location: gallery.php");
-  exit();
-}
-include('includes/tools.inc');
-include('includes/db_connect.inc');
-$title = 'Country Detail';
-include('includes/header.inc');
+  if(empty($_GET['countryid'])) {
+    header("Location: gallery.php");
+    exit();
+  }
+  include('includes/tools.inc');
+  include('includes/db_connect.inc');
+  $title = 'Country Detail';
+  include('includes/header.inc');
 ?>
   <main class="container">
     <h2><?= $title ?></h2>

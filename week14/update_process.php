@@ -5,6 +5,11 @@
     exit();
   }
   include('includes/tools.inc');
+// divert anyone not logged in to the login form
+  if (empty($_SESSION['userid'])) {
+    header("Location: login.php");
+    exit();
+  }  
   include('includes/db_connect.inc');
 
 // Step 1: Make sure the form is sending you something via POST and FILES

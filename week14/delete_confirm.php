@@ -1,10 +1,10 @@
 <?php
+  include('includes/tools.inc');
 // divert "stray" customers back to the countries table
-  if (empty($_GET['countryid'])) {
+  if (empty($_GET['countryid']) || empty($_SESSION['userid'])) {
     header("Location: index.php");
     exit();
   }
-  include('includes/tools.inc');
   include('includes/db_connect.inc');
   $title = 'Confirm Delete';
   include('includes/header.inc');

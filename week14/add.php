@@ -1,5 +1,10 @@
 <?php
 include('includes/tools.inc');
+// divert anyone not logged in to the login form
+if (empty($_SESSION['userid'])) {
+  header("Location: login.php");
+  exit();
+}
 include('includes/db_connect.inc');
 $title = 'Add Country';
 include('includes/header.inc');

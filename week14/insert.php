@@ -1,12 +1,17 @@
 <?php
-if(empty($_POST) || $empty($_FILES)) {
-  header("Location: add.php");
-  exit();
-}
-include('includes/tools.inc');
-include('includes/db_connect.inc');
-$title = 'Insert';
-include('includes/header.inc');
+  if(empty($_POST) || $empty($_FILES)) {
+    header("Location: add.php");
+    exit();
+  }
+  include('includes/tools.inc');
+// divert anyone not logged in to the login form
+  if (empty($_SESSION['userid'])) {
+    header("Location: login.php");
+    exit();
+  }
+  include('includes/db_connect.inc');
+  $title = 'Insert';
+  include('includes/header.inc');
 ?>
   <main class="container">
     <h2><?= $title ?></h2>
