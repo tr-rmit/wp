@@ -9,7 +9,8 @@ include('includes/header.inc');
     <table class="table table-striped table-hover"> <!--  table-striped -->
 <?php
     try {
-      $countries = mysqli_query($conn, "select * from country");  
+      $sql = "select * from country left join users on country.userid = users.userid";
+      $countries = mysqli_query($conn, $sql);  
       // preshow($row);
     } catch (Exception $ex) {
       echo 'Error: ' .$ex->getMessage();
@@ -17,6 +18,7 @@ include('includes/header.inc');
     } 
     $firstRun = true;
     while($row = mysqli_fetch_assoc($countries)) {
+      unset($row['password']); // don't show this field!
       if($firstRun) {
         echo "    <tr>\n";
         foreach($row as $colname => $value ) {
