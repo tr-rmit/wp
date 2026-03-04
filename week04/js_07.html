@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>Book Object</title>
+	<meta charset="UTF-8">
+	<script>
+		let book = {
+			title: "Let the Right One In",
+			author: "John Ajvide Lindqvist",
+			published: 2005
+		}
+	</script>
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+		}
+
+		h1 {
+			color: #0099cc;
+		}
+	</style>
+</head>
+
+<body>
+	<h1>Book</h1>
+<p id="book-info"></p>
+	<script>
+		for (property in book) {
+			document.getElementById("book-info").innerHTML += property + ": " + book[property] + "<br>";
+		}
+	</script>
+</body>
+
+</html>
