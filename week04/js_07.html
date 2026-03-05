@@ -10,6 +10,19 @@
 			author: "John Ajvide Lindqvist",
 			published: 2005
 		}
+    const books = [
+      {
+        title: "Let the Right One In",
+        author: "John Ajvide Lindqvist",
+        published: 2005
+      },
+      {
+        title: "Star Wars",
+        author: "George Lucas",
+        published: 1976
+      }
+    ];
+
 	</script>
 	<style>
 		body {
@@ -24,11 +37,20 @@
 
 <body>
 	<h1>Book</h1>
-<p id="book-info"></p>
+  <p id="book-info"></p>
 	<script>
+    // In Java property would be the entire element, not just the property
 		for (property in book) {
 			document.getElementById("book-info").innerHTML += property + ": " + book[property] + "<br>";
 		}
+    document.getElementById("book-info").innerHTML += "<hr>";
+    for(let b=0; b<books.length; b++) {
+      for (property in books[b]) {
+        document.getElementById("book-info").innerHTML += property + ": " + books[b][property] + "<br>";
+      }
+      document.getElementById("book-info").innerHTML += "<br>";
+    }  
+
 	</script>
 </body>
 
