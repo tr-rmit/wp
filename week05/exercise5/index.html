@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Courses Filter (not pets!)</title>
+  <script src="script.js" defer></script>
+  <style>
+    body {
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
+      font-size: 1rem;
+    }
+
+    .course {
+      display: inline-block;
+      width: 200px;
+      margin: 10px;
+      border: 1px solid #ccc;
+      padding: 10px;
+      min-height: 150px;
+      background-color: rgb(160, 160, 101);
+      vertical-align: top;
+      transition-duration: 0.5s; 
+    }
+  </style>
+</head>
+<body>
+  <h1>Mini Calculator</h1>
+  <h1>Courses</h1>
+  <label for="statusFilter">Filter courses:</label>
+  <select id="statusFilter">
+    <option value="all">All</option>
+    <option value="open">Open</option>
+    <option value="full">Full</option>
+    <option value="cancelled">Cancelled</option>
+  </select>
+
+  <div class="course-list">
+    <div class="course" data-status="open">Intro to Web Development</div>
+    <div class="course" data-status="full">Advanced JavaScript</div>
+    <div class="course" data-status="cancelled">Cloud Fundamentals</div>
+    <div class="course" data-status="open">Databases 101</div>
+  </div>
+  
+
+
+
+
+
+  
+</body>
+</html>
