@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Week 6 Form Validation</title>
+  <style>
+    #errorMsg { color: red; margin-top: 10px; }
+    #successMsg { color: rgb(0, 128, 60); margin-top: 10px; }
+  </style>
+</head>
+<body>
+  <h1>Profile Form</h1>
+  <form id="profileForm" method="post" action="https://titan.csit.rmit.edu.au/~e54061/wp/form-processing.php" enctype="multipart/form-data">
+    <label for="name">Name:</label><br>
+    <input type="text" id="name" name="name"><br><br>
+
+    <label for="age">Age:</label><br>
+    <input type="number" id="age" name="age"><br><br>
+
+    <label for="photo">Profile Picture:</label><br>
+    <input type="file" id="photo" name="photo" accept=".jpg,.jpeg,.png,.gif,.webp"><br><br>
+
+    <button type="submit">Submit</button>
+  </form>
+
+  <div id="errorMsg"></div>
+  <div id="successMsg"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
