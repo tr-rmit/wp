@@ -12,6 +12,19 @@
 
     <!-- Latest compiled JavaScript -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      // Code generated using the Diary week 4.1 prompt 
+      function filterBooks(selected) {
+        console.log(selected); //"filterbooks called"
+        if (selected=="") {
+          console.log("implement show all books");
+        } else if (selected=="shelved"){
+          console.log("implement show only shelved books");
+        } else if (selected=="reserved"){
+          console.log("implement show only reserved books");
+        }
+      }
+    </script>
 </head>
 
 <body>
@@ -39,44 +52,53 @@
             </ul>
         </nav>
         <main class="row">
-            <div class="col-12 col-md-6 col-lg-4 text-center">
+          <h1>Book Gallery</h1>
+            <div>
+            <!-- Old school event listener: onchange -->
+              <select onchange="filterBooks(this.value)">
+                <option value="">All</option>
+                <option value="shelved">Shelved only</option>
+                <option value="reserved">Reserved only</option>
+              </select>
+            </div>
+            <div class="col-12 col-md-6 col-lg-4 text-center"  data-status="shelved">
                 <h3>Whispers of the Wind</h3>
-                <img class="img-fluid img-thumbnail gallery-img" src="assets/images/1.png" width="160" height="45"
+                <img class="img-fluid img-thumbnail gallery-img" src="assets/images/books/1.png" width="160" height="45"
                     alt="Eleanor Hart" data-bs-toggle="modal" data-bs-target="#imageModal">
                 <p>Set in the Victorian era, a young woman defies societal expectations to chase her dreams across the
                     wild moors of England.</p>
             </div>
-            <div class="col-12 col-md-6 col-lg-4 text-center">
+            <div class="col-12 col-md-6 col-lg-4 text-center"  data-status="shelved">
                 <h3>Neon Shadows</h3>
-                <img class="img-fluid img-thumbnail gallery-img" src="assets/images/2.png" width="160" height="45"
+                <img class="img-fluid img-thumbnail gallery-img" src="assets/images/books/2.png" width="160" height="45"
                     alt="Jackson Vale" data-bs-toggle="modal" data-bs-target="#imageModal">
                 <p>In a neon-lit future city, a detective must solve a conspiracy that could change humanity forever.
                 </p>
             </div>
-            <div class="col-12 col-md-6 col-lg-4 text-center">
+            <div class="col-12 col-md-6 col-lg-4 text-center"  data-status="shelved">
                 <h3>Roots Beneath the Ice</h3>
-                <img class="img-fluid img-thumbnail gallery-img" src="assets/images/3.png" width="160" height="45"
+                <img class="img-fluid img-thumbnail gallery-img" src="assets/images/books/3.png" width="160" height="45"
                     alt="Sara Nguyen" data-bs-toggle="modal" data-bs-target="#imageModal">
                 <p>An epic tale of survival and self-discovery unfolds as a team of explorers unearth secrets buried
                     deep in the Arctic tundra.</p>
             </div>
-            <div class="col-12 col-md-6 col-lg-4 text-center">
+            <div class="col-12 col-md-6 col-lg-4 text-center"  data-status="shelved">
                 <h3>The Last Ember</h3>
-                <img class="img-fluid img-thumbnail gallery-img" src="assets/images/4.png" width="160" height="45"
+                <img class="img-fluid img-thumbnail gallery-img" src="assets/images/books/4.png" width="160" height="45"
                     alt="Thomas Grey" data-bs-toggle="modal" data-bs-target="#imageModal">
                 <p>When magic is nearly extinct, a reluctant hero rises to restore the lost flames of an ancient world.
                 </p>
             </div>
-            <div class="col-12 col-md-6 col-lg-4 text-center">
+            <div class="col-12 col-md-6 col-lg-4 text-center"  data-status="reserved">
                 <h3>Through Glass Skies</h3>
-                <img class="img-fluid img-thumbnail gallery-img" src="assets/images/5.png" width="160" height="45"
+                <img class="img-fluid img-thumbnail gallery-img" src="assets/images/books/5.png" width="160" height="45"
                     alt="Amara Singh" data-bs-toggle="modal" data-bs-target="#imageModal">
                 <p>A love story unfolds between two pilots whose lives are as turbulent as the storms they fly through.
                 </p>
             </div>
-            <div class="col-12 col-md-6 col-lg-4 text-center">
+            <div class="col-12 col-md-6 col-lg-4 text-center"  data-status="shelved">
                 <h3>The Silent Archivist</h3>
-                <img class="img-fluid img-thumbnail gallery-img" src="assets/images/6.png" width="160" height="45"
+                <img class="img-fluid img-thumbnail gallery-img" src="assets/images/books/6.png" width="160" height="45"
                     alt="Leo Ramirez" data-bs-toggle="modal" data-bs-target="#imageModal">
                 <p>When rare manuscripts start disappearing from a famous library, a reclusive archivist must uncover
                     the truth before it's too late.</p>
@@ -87,7 +109,7 @@
             <div class="modal-dialog modal-dialog-centered modal-md">
                 <div class="modal-content">
                     <div class="modal-body text-center">
-                        <img id="modalImage" class="img-fluid" src="assets/images/1.png" alt="Large Book Cover">
+                        <img id="modalImage" class="img-fluid" src="assets/images/books/1.png" alt="Large Book Cover">
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

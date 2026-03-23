@@ -1,0 +1,15 @@
+:root {
+  --primary-brand-color: rgb(56, 5, 103);
+}
+
+.bg {
+  background-color: var(--primary-brand-color);
+}
+nav.navbar {
+  padding-inline: 20px; /* left+right or start+end */
+}
+nav.navbar a.nav-link.active {
+  border-radius: 5px;
+  color: var(--primary-brand-color);
+  background-color: white;
+}
