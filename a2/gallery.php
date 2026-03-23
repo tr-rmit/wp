@@ -38,16 +38,16 @@
         <nav class="navbar navbar-expand-sm bg navbar-dark mb-3 rounded">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link " href="index.html">Home</a>
+                    <a class="nav-link " href="index.php">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link " href="books.html">Books</a>
+                    <a class="nav-link " href="books.php">Books</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link " href="new_book.html">New Book</a>
+                    <a class="nav-link " href="new_book.php">New Book</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" href="gallery.html">Gallery</a>
+                    <a class="nav-link active" href="gallery.php">Gallery</a>
                 </li>
             </ul>
         </nav>
