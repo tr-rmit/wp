@@ -1,40 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gallery</title>
-    <!-- Latest compiled and minified CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="assets/css/style.css">
-
-    <!-- Latest compiled JavaScript -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
-    <script>
-      // Code generated using the Diary week 4.1 prompt 
-      function filterBooks(selected) {
-        console.log(selected); //"filterbooks called"
-        if (selected=="") {
-          console.log("implement show all books");
-        } else if (selected=="shelved"){
-          console.log("implement show only shelved books");
-        } else if (selected=="reserved"){
-          console.log("implement show only reserved books");
-        }
-      }
-    </script>
-</head>
-
-<body>
-    <div class="container">
-        <header class="mt-3 p-4 bg text-white rounded mb-3">
-            <div class="container text-center">
-                <h1>Welcome to the Library</h1>
-                <p>Best place to learn and enjoy</p>
-            </div>
-        </header>
+<?php
+  $title = "Gallery";
+  include_once("assets/includes/header.inc");
+?>
         <nav class="navbar navbar-expand-sm bg navbar-dark mb-3 rounded">
             <ul class="navbar-nav">
                 <li class="nav-item">
@@ -117,14 +84,6 @@
                 </div>
             </div>
         </div>
-        <footer class="page-footer font-small bg-light lighten-5">
-            <div class="footer-copyright text-center py-3">&copy; 2025
-                Tanya
-            </div>
-        </footer>
-    </div>
-    <!-- Link to external script -->
-    <script src="assets/js/main.js"></script>
-</body>
-
-</html>
+<?php 
+  include("assets/includes/footer.inc");
+?>
