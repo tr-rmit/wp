@@ -1,4 +1,12 @@
 <?php
+  include_once("assets/includes/tools.inc");
+  include_once("assets/includes/db_connect.inc");
+  if (!isLoggedIn()) {
+    /* redirect to another page, more details later */
+    exit();
+  } 
+  
+  /* All good, the user is logged in so we can print out the HTML */
   $title = "Gallery";
   include_once("assets/includes/header.inc");
 ?>
