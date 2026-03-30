@@ -1,4 +1,6 @@
 <?php
+  include("../a2/assets/includes/tools.inc");
+
   $title = 'Arrays: Indexed &amp; Associative';
   $dim1Names = ['Alison', 'Roxi', 'Pippin' ];
   $dim1Ages = [20, 37, 43];
@@ -7,6 +9,8 @@
     'Roxi' => 37,
     'Pippin' => 43
   ];
+
+  preshow($dim1Names);
   $dim2Assoc = [
     'Alison' => [
       'id' => 's54062',
@@ -17,10 +21,11 @@
       'age' => 37
     ],
     'Pippin' => [
-      'id' => 's54063',
+      'id' => '',
       'age' => 43
     ]
   ];
+  preshow($dim2Assoc);
 
 ?>
 <!DOCTYPE html>
