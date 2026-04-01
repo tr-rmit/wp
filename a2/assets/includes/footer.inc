@@ -1,9 +1,8 @@
-        <footer class="page-footer font-small bg-light lighten-5">
-            <div class="footer-copyright text-center py-3">&copy; 2025
-                Tanya
-            </div>
-        </footer>
-    </div>
+      <footer class="page-footer font-small bg-light lighten-5">
+          <div class="footer-copyright text-center py-3">&copy; 2025 Tanya</div>
+      </footer>
+  </div>
+  <!-- alternative place for script.js -->
 </body>
 
 </html>

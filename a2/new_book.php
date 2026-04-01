@@ -1,31 +1,16 @@
 <?php
   include_once("assets/includes/tools.inc");
   include_once("assets/includes/db_connect.inc");
-  if (!isLoggedIn()) {
-    /* redirect to another page, more details later */
+  if(!isLoggedIn()) {
+    /* redirect them to the login page */
     exit();
-  } 
+  }
   
-  /* All good, the user is logged in so we can print out the HTML */
   $title = "New Book";
   include_once("assets/includes/header.inc");
+  include_once("assets/includes/nav.inc");
 ?>
-        <nav class="navbar navbar-expand-sm bg navbar-dark mb-3 rounded">
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link " href="index.php">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link " href="books.php">Books</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link active" href="new_book.php">New Book</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link " href="gallery.php">Gallery</a>
-                </li>
-            </ul>
-        </nav>
+
         <main>
         <form id="uploadForm" action="#" method="post" enctype="multipart/form-data">
             <div class="mb-3 mt-3">

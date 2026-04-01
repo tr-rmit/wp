@@ -1,1 +1,1 @@
-/* This is where the database connection code for RMIT's Jacob5 data base will go */
+/* This is where the database connection code for local phpMyAdmin and RMIT's Jacob5 data bases will go */
