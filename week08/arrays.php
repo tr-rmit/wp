@@ -9,8 +9,6 @@
     'Roxi' => 37,
     'Pippin' => 43
   ];
-
-  preshow($dim1Names);
   $dim2Assoc = [
     'Alison' => [
       'id' => 's54062',
@@ -21,13 +19,12 @@
       'age' => 37
     ],
     'Pippin' => [
-      'id' => '',
+      'id' => 's54064',
       'age' => 43
     ]
   ];
-  preshow($dim2Assoc);
-
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -53,6 +50,7 @@
       foreach($dim1Assoc as $name => $age) {
         echo 'Employee #' . ($i+1) . " is $name and is $age years old.<br>";
       }
+      //preshow($dim1Assoc);
     ?>
     <br> Works better: <br>
     <?php 
@@ -60,8 +58,9 @@
       foreach($dim2Assoc as $name => $details) {
         echo "Employee id: {$details['id']} is $name and is {$details['age']} years old.<br>";
       }
+      preshow($dim2Assoc);
     ?>
   </p>
-  <blockquote>Can you rewrite the code so that 1) ids are the key and 2) age and name are inside the nested array, ie the details array.</blockquote>
+    <blockquote>For Homework: Can you rewrite the code so that 1) ids are the key and 2) age and name are inside the nested details array?.</blockquote> 
 </body>
 </html>
