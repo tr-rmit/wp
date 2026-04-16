@@ -11,45 +11,31 @@
             <tr>
                 <th>Title</th>
                 <th>Author</th>
-                <th>Genre</th>
-                <th>Year</th>
+                <th>Status</th>
+                <th>Add Date</th>
             </tr>
+<?php
+  try {
+    $books = mysqli_query($conn, "select * from books");  
+    
+  } catch (Exception $ex) {
+    echo 'Error: ' .$ex->getMessage();
+    die();
+  } 
+  while($row = mysqli_fetch_assoc($books)) {
+    // preshow($row);
+    echo <<<"CDATA"
             <tr>
-                <td><a href='#'>Whispers of the Wind</a></td>
-                <td>Eleanor Hart</td>
-                <td>Historical Fiction</td>
-                <td>2021</td>
-            </tr>
-            <tr>
-                <td><a href='#'>Neon Shadows</a></td>
-                <td>Jackson Vale</td>
-                <td>Science Fiction</td>
-                <td>2023</td>
-            </tr>
-            <tr>
-                <td><a href='#'>Roots Beneath the Ice</a></td>
-                <td>Sara Nguyen</td>
-                <td>Adventure</td>
-                <td>2020</td>
-            </tr>
-            <tr>
-                <td><a href='#'>The Last Ember</a></td>
-                <td>Thomas Grey</td>
-                <td>Fantasy</td>
-                <td>2022</td>
-            </tr>
-            <tr>
-                <td><a href='#'>Through Glass Skies</a></td>
-                <td>Amara Singh</td>
-                <td>Romance</td>
-                <td>2024</td>
-            </tr>
-            <tr>
-                <td><a href='#'>The Silent Archivist</a></td>
-                <td>Leo Ramirez</td>
-                <td>Mystery/Thriller</td>
-                <td>2019</td>
-            </tr>
+                <td><a href='details.php?isbn={$row['isbn']}'>{$row['Title']}</a></td>
+                <td>{$row['Author']}</td>
+                <td>{$row['status']}</td>
+                <td>{$row['created_at']}</td>
+            </tr>    
+CDATA;    
+  }
+
+?>          
+
         </table>
     </main>
 <?php 

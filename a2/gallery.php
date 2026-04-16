@@ -8,6 +8,7 @@
 ?>
         <main class="row">
           <h1>Book Gallery</h1>
+
             <div>
             <!-- Old school event listener: onchange -->
               <select onchange="filterBooks(this.value)">
@@ -16,6 +17,27 @@
                 <option value="reserved">Reserved only</option>
               </select>
             </div>
+<?php
+  try {
+    $books = mysqli_query($conn, "select * from books");  
+    
+  } catch (Exception $ex) {
+    echo 'Error: ' .$ex->getMessage();
+    die();
+  } 
+  while($row = mysqli_fetch_assoc($books)) {
+    //preshow($row);
+    echo <<<"CDATA"
+            <div class="col-12 col-md-6 col-lg-4 text-center"  data-status="{$row['status']}">
+                <h3>{$row['Title']}</h3>
+                <img class="img-fluid img-thumbnail gallery-img" src="assets/images/books/{$row['image_path']}" width="160" height="45"
+                    alt="{$row['Author']}" data-bs-toggle="modal" data-bs-target="#imageModal">
+                <p>Oops! Change the database to contain details.</p>
+            </div>
+
+CDATA;
+  }
+?>
             <div class="col-12 col-md-6 col-lg-4 text-center"  data-status="shelved">
                 <h3>Whispers of the Wind</h3>
                 <img class="img-fluid img-thumbnail gallery-img" src="assets/images/books/1.png" width="160" height="45"

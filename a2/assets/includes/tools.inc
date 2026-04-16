@@ -2,9 +2,11 @@
   session_start();
   
   /* See Tanya's announcement: https://rmit.instructure.com/courses/159686/discussion_topics/2932046 */
-  ini_set('display_errors', 1); 
-  error_reporting(E_ALL); 
-
+  if (strstr($_SERVER['SERVER_NAME'], 'localhost')) {
+    ini_set('display_errors', 1); 
+    error_reporting(E_ALL); 
+  }
+  
   /* Updated Pre Show Code generated using Gemini AI and adapted */
   // reserved variable used to track depth in new recursive preshow
   $PRE_SHOW_DEPTH = 0; 

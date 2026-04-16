@@ -1,16 +1,23 @@
+<?php
+  $navlinks = [
+    'index' => 'Home',
+    'books' => 'Books',
+    'new_book' => 'New Book',
+    'gallery' => 'Gallery'
+  ];
+?>
     <nav class="navbar navbar-expand-sm bg navbar-dark mb-3 rounded">
       <ul class="navbar-nav">
+<?php 
+  foreach($navlinks as $pageLink => $pageTitle) {
+    $active = ($title == $pageTitle ? 'active' : '');
+    echo <<<"CDATA"
         <li class="nav-item">
-          <a class="nav-link " href="index.php">Home</a>
+          <a class="nav-link $active" href="$pageLink.php">$pageTitle</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link " href="books.php">Books</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link active" href="new_book.php">New Book</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link " href="gallery.php">Gallery</a>
-        </li>
+
+CDATA;    
+  }
+?>
       </ul>
     </nav>
