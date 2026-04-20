@@ -7,8 +7,8 @@
   include_once("assets/includes/nav.inc");
 ?>
         <main class="row">
-          <h1>Book Gallery</h1>
-
+          <div class="d-flex justify-content-between">
+            <h1><?=  $title ?></h1>
             <div>
             <!-- Old school event listener: onchange -->
               <select onchange="filterBooks(this.value)">
@@ -17,22 +17,25 @@
                 <option value="reserved">Reserved only</option>
               </select>
             </div>
+          </div>
 <?php
   try {
-    $books = mysqli_query($conn, "select * from books");  
+    $books = mysqli_query($conn, "select *, YEAR(written_in) as year_written from books");  
     
   } catch (Exception $ex) {
     echo 'Error: ' .$ex->getMessage();
     die();
   } 
   while($row = mysqli_fetch_assoc($books)) {
-    //preshow($row);
+    preshow($row);
+    //$year_written = new DateTime("Y",$row['written_in']);
     echo <<<"CDATA"
             <div class="col-12 col-md-6 col-lg-4 text-center"  data-status="{$row['status']}">
-                <h3>{$row['Title']}</h3>
+                <h3>{$row['title']}</h3>
+                <h4>- by {$row['author']} ({$row['year_written']}) </h4>
                 <img class="img-fluid img-thumbnail gallery-img" src="assets/images/books/{$row['image_path']}" width="160" height="45"
-                    alt="{$row['Author']}" data-bs-toggle="modal" data-bs-target="#imageModal">
-                <p>Oops! Change the database to contain details.</p>
+                    alt="{$row['author']}" data-bs-toggle="modal" data-bs-target="#imageModal">
+                <p>{$row['description']}</p>
             </div>
 
 CDATA;

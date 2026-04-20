@@ -12,6 +12,7 @@
 ?>
 
         <main>
+          <h1><?=  $title ?></h1>
         <form id="uploadForm" action="#" method="post" enctype="multipart/form-data">
             <div class="mb-3 mt-3">
                 <label for="title" class="form-label">Title</label>

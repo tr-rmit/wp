@@ -7,13 +7,14 @@
   include_once("assets/includes/nav.inc");
 ?>
     <main class="w-800 p-3">
-        <table class="table table-striped table-hover">
-            <tr>
-                <th>Title</th>
-                <th>Author</th>
-                <th>Status</th>
-                <th>Add Date</th>
-            </tr>
+      <h1><?=  $title ?></h1>
+      <table class="table table-striped table-hover">
+        <tr>
+          <th>Title</th>
+          <th>Author</th>
+          <th>Status</th>
+          <th>Add Date</th>
+        </tr>
 <?php
   try {
     $books = mysqli_query($conn, "select * from books");  
@@ -25,12 +26,12 @@
   while($row = mysqli_fetch_assoc($books)) {
     // preshow($row);
     echo <<<"CDATA"
-            <tr>
-                <td><a href='details.php?isbn={$row['isbn']}'>{$row['Title']}</a></td>
-                <td>{$row['Author']}</td>
-                <td>{$row['status']}</td>
-                <td>{$row['created_at']}</td>
-            </tr>    
+          <tr>
+            <td><a href='details.php?isbn={$row['isbn']}'>{$row['Title']}</a></td>
+            <td>{$row['Author']}</td>
+            <td>{$row['status']}</td>
+            <td>{$row['created_at']}</td>
+          </tr>    
 CDATA;    
   }
 
