@@ -12,8 +12,10 @@
         <tr>
           <th>Title</th>
           <th>Author</th>
+          <th>Synopsis</th>
+          <th>Year Published</th>
+          <th>Date Added</th>
           <th>Status</th>
-          <th>Add Date</th>
         </tr>
 <?php
   try {
@@ -27,10 +29,12 @@
     // preshow($row);
     echo <<<"CDATA"
           <tr>
-            <td><a href='details.php?isbn={$row['isbn']}'>{$row['Title']}</a></td>
-            <td>{$row['Author']}</td>
-            <td>{$row['status']}</td>
+            <td><a href='details.php?isbn={$row['isbn']}'>{$row['title']}</a></td>
+            <td>{$row['author']}</td>
+            <td>{$row['description']}</td>
+            <td>{$row['published']}</td>
             <td>{$row['created_at']}</td>
+            <td>{$row['status']}</td>
           </tr>    
 CDATA;    
   }

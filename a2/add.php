@@ -10,7 +10,7 @@
   include_once("assets/includes/header.inc");
   include_once("assets/includes/nav.inc");
 
-  /* Bonus exercise for advanced adventurous students ...
+  /* Bonus exercise for advanced adventurous students (part 1) ...
 
   if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // pop most of the insert.php code here
@@ -21,8 +21,12 @@
 
         <main>
           <h1><?=  $title ?></h1>
-          <!-- to make this form into a processing script and insert capeable, change action to add.php -->
-        <form id="uploadForm" action="insert.php" method="post" enctype="multipart/form-data">
+          <!-- 
+          Bonus exercise for advanced adventurous students (part 2) ...
+           
+          Change action to add.php to turn this form into a processing script and insert records  
+          -->
+          <form id="uploadForm" action="insert.php" method="post" enctype="multipart/form-data">
             <div class="mb-3 mt-3">
                 <label for="title" class="form-label">Title</label>
                 <input type="text" name="title" id="title" class="form-control w-50" required>
@@ -58,7 +62,7 @@
             <div class="mb-3">
                 <input type=submit value="Add New Book" class="btn btn-primary">
             </div>
-        </form>
+          </form>
         </main>
 <?php 
   include("assets/includes/footer.inc");
