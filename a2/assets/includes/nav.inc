@@ -2,7 +2,7 @@
   $navlinks = [
     'index' => 'Home',
     'books' => 'Books',
-    'new_book' => 'New Book',
+    'add' => 'Add Book',
     'gallery' => 'Gallery'
   ];
 ?>

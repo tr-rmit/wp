@@ -6,14 +6,23 @@
     exit();
   }
   
-  $title = "New Book";
+  $title = "Add Book";
   include_once("assets/includes/header.inc");
   include_once("assets/includes/nav.inc");
+
+  /* Bonus exercise for advanced adventurous students ...
+
+  if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    // pop most of the insert.php code here
+  }
+
+  */
 ?>
 
         <main>
           <h1><?=  $title ?></h1>
-        <form id="uploadForm" action="#" method="post" enctype="multipart/form-data">
+          <!-- to make this form into a processing script and insert capeable, change action to add.php -->
+        <form id="uploadForm" action="insert.php" method="post" enctype="multipart/form-data">
             <div class="mb-3 mt-3">
                 <label for="title" class="form-label">Title</label>
                 <input type="text" name="title" id="title" class="form-control w-50" required>
@@ -23,11 +32,16 @@
                 <input type="text" name="author" id="author" class="form-control w-50" required>
             </div>
             <div class="mb-3">
-                <label for="genre" class="form-label">Genre</label>
-                <input type="text" name="genre" id="genre" class="form-control w-50" required>
+                <label for="status" class="form-label">Status</label>
+                <input list="statuses" name="status" id="status" class="form-control w-50" required>
+                <datalist id="statuses">
+                  <option value="Shelved">
+                  <option value="Available">
+                  <option value="Unavailable">
+                </datalist>
             </div>
             <div class="mb-3">
-                <label for="published" class="form-label">Year</label>
+                <label for="published" class="form-label">Year Published</label>
                 <input type="number" name="published" id="published" required class="form-control w-50">
             </div>
             <div class="mb-3">
