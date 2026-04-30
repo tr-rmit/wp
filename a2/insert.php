@@ -51,40 +51,16 @@ use Dom\CDATASection;
   $stmt->execute();
 
   if ($stmt->affected_rows > 0) {
-    echo <<<CDATA
-      <div class="alert alert-success alert-dismissible">
-        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-        <p>New record successfully inserted into the database</p>
-      </div>
-
-CDATA;        
+    bootstrapAlert("success","New record successfully inserted into the database");
     if (move_uploaded_file($temp, 'assets/images/books/' . $file01)) {
-      echo <<<CDATA
-      <div class="alert alert-success alert-dismissible">
-        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-        <p>Image moved to book images folder</p>
-      </div>
-
-CDATA;      
+      bootstrapAlert("success","Image moved to book images folder");
     } else {
-      echo <<<CDATA
-      <div class="alert alert-danger alert-dismissible">
-        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-        <p>Image not moved to book images folder</p>
-      </div>
-      
-CDATA;      
+      bootstrapAlert("danger","Image not moved to book images folder");
     }
   } else {
-echo <<<CDATA
-      <div class="alert alert-danger alert-dismissible">
-        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-        <p>Book was not inserted into the database, sorry :-(</p>
-      </div>
-      
-CDATA;     
+    bootstrapAlert("danger","Book was not inserted into the database, sorry :-(");
   }
-
+  
   echo "<p></p><a href='add.php'>Return to the Add Book page</a></p>";
   ?>
 

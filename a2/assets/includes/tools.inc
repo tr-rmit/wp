@@ -45,3 +45,13 @@
     /* We will cover this in later classes */
     /* check in the session: is a user logged in? return true or false */
   }
+
+  function bootstrapAlert($type, $message) {
+    echo <<<CDATA
+      <div class="alert alert-$type alert-dismissible">
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        <p>$message</p>
+      </div>
+
+CDATA;  
+  }
