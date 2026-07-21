@@ -80,8 +80,8 @@ nav li a:hover {
 }
 
 footer {
-    background-color: var(--accent-slate)
-    color: #fff;
+    background-color: var(--accent-slate);
+    color: var(--background-white);
     padding: 1rem;
 }
 
