@@ -1,9 +1,40 @@
+:root {
+  --primary-bg-color: green; /* global scope */
+
+/* Brand Colours - Teal & Amber: */
+    --primary-color: #0d9488;
+    --primary-dark: #0f766e;
+    --srimary-light: #14b8a6;
+    --secondary-color: #d97706;
+    --secondary-dark: #b45309;
+
+ /* Accent Colours: */
+    --accent-amber: #fbbf24;
+    --accent-green: #10b981;
+    --accent-slate: #475569;
+
+ /* Neutral Colours: */
+    --text-dark: #1f2937;
+    --text-light: #6b7280;
+    --background-light: #f9fafb;
+    --background-white: #ffffff;
+    --border-color: #e5e7eb; 
+
+}
+
+
+
 body {
-    background-color: #eee7e7;
+    background-color: var(--primary-bg-color);
     color: #333;
-    font-family: 'Open Sans', sans-serif;
+    font-family: "Elms Sans", sans-serif;
     font-size: 16px;
     line-height: 1.5;
+}
+
+h1, h2, h3, h4, h5, h6,
+label, legend {
+    font-family: "Righteous", sans-serif;
 }
 
 .logo-background {
@@ -12,11 +43,15 @@ body {
     background-position: left;
     background-size: 100px;
     background-color: #fff;
+    padding: 5px;
 }
 
 .logo-background h1,
 .logo-background h2 {
     margin-left: 120px;
+}
+.logo-background h2 {
+  margin-bottom: 0px;
 }
 
 nav {
@@ -63,8 +98,14 @@ main {
 }
 
 .section-container section {
-    flex: 1;
     margin: 10px;
     padding: 20px;
     box-sizing: border-box;
+}
+
+.section-container section:first-child {
+  
+}
+.section-container section:last-child {
+    flex: 1;
 }
