@@ -1,0 +1,27 @@
+.hero {
+  min-height: 300px;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+.hero .container {
+  position: relative;
+  z-index: 2;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(127, 127, 127, 0.5);
+}
+.hero-lion {
+  background-image: url("../images/carousel/c-lion.jpg");
+  background-position: 50% 32%;
+
+}
+.hero-tiger {
+  background-image: url("../images/carousel/c-tiger.jpg");
+  background-position: 50% 18%;
+}
