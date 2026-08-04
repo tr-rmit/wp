@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>Book Object</title>
+	<meta charset="UTF-8">
+
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+		}
+
+		h1 {
+			color: #0099cc;
+		}
+	</style>
+</head>
+
+<body>
+	<h1>Book</h1>
+  <p id="book-info"></p>
+  <script src="js/exercise7.js"></script>	
+	<script>
+    for (let i=0; i<book.length; i++) {
+      // can't use this type of loop for objects, only indexed arrays
+    }
+		for (property in book) {
+			document.getElementById("book-info").innerHTML += property + ": " + book[property] + "<br>";
+		}
+  </script>
+  <table border="1"> <!-- don't do this! Use CSS instead -->
+    <tr>
+    <script>
+      for (property in book) {
+        document.write("<th>" + property.toUpperCase() + "</th>");
+      }
+    </script>
+    </tr>
+    <tr>
+    <script>
+      for (property in book) {
+        document.write("<td>" + book[property] + "</td>");
+      }
+    </script>
+    </tr>
+  </table>
+
+  <table border="1"> <!-- don't do this! Use CSS instead -->
+    <tr>
+    <script>
+      for (property in books[0]) {  
+        document.write("<th>" + property.toUpperCase() + "</th>");
+      }
+    </script>
+    </tr>
+   
+    <script>
+      console.log("Books length: " +books.length);
+      for (let b=0; b<books.length; b++) {
+        document.write("<tr>");
+        for (let property in books[b]) {
+          document.write("<td>" + books[b][property] + "</td>");
+        }
+        document.write("</tr>");
+      }
+    </script>
+  </table>
+
+
+
+</body>
+
+</html>
