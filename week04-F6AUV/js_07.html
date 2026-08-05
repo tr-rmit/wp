@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>Book Object</title>
+	<meta charset="UTF-8">
+	<script>
+		let book = {
+			title: "Let the Right One In",
+			author: "John Ajvide Lindqvist",
+			published: 2005
+		}
+
+		let books = [
+      {
+        title: "Let the Right One In",
+        author: "John Ajvide Lindqvist",
+        published: 2005
+      },
+      {
+        title: "The Hobbit",
+        author: "J.R.R. Tolkien",
+        published: 1937
+      }
+    ];
+
+	</script>
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+		}
+
+		h1 {
+			color: #0099cc;
+		}
+	</style>
+</head>
+
+<body>
+	<h1>Book</h1>
+  <p id="book-info"></p>
+	<script>
+    // for (let i=0; i<book.length; i++) { ... }
+		for (property in book) {
+			document.getElementById("book-info").innerHTML += property + ": " + book[property] + "<br>";
+		}
+  </script>  
+
+  <h2>Improvement: Book table</h2>
+  <table border="1">
+  <script>  
+		for (property in book) {
+      document.write(`<tr><th>${property}</th><td>${book[property]}</td>`);
+		}
+	</script>
+  </table>  
+
+
+  <h2>Improvement: Books table</h2>
+  <table border="1">
+  <script>  
+    document.write('<tr>');
+		for (property in books[0]) {
+      document.write(`<th>${property}</th>`);
+		}
+    document.write('</tr>');
+    for(let b=0; b<books.length; b++) {
+      document.write('<tr>');
+      for (property in books[b]) {
+        document.write(`<td>${books[b][property]}</td>`);
+      }  
+      document.write('</tr>');
+    }
+    console.table(book);
+    console.table(books);
+	</script>
+  </table>
+
+
+</body>
+
+</html>
