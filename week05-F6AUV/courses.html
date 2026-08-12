@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Courses Filter</title>
+  <style>
+    /* Don't use embedded style in the assignments */
+    .course {
+      display: inline-block;
+      padding: 6px;
+      margin: 10px;
+      border: groove 6px #400;
+      border-radius: 6px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Courses Filter</h1>
+  <form>
+    <label for="statusFilter">Filter courses:</label>
+    <select id="statusFilter">
+      <option value="all">All</option>
+      <option value="open">Open</option>
+      <option value="full">Full</option>
+      <option value="cancelled">Cancelled</option>
+    </select>
+  </form>
+  <div class="course-list">
+    <div class="course" data-status="open">Intro to Web Development</div>
+    <div class="course" data-status="full">Advanced JavaScript</div>
+    <div class="course" data-status="cancelled">Cloud Fundamentals</div>
+    <div class="course" data-status="open">Databases 101</div>
+  </div>
+  <script src="js/courses.js"></script>
+</body>
+</html>
