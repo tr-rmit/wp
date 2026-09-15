@@ -7,8 +7,8 @@ if ($_SERVER["SERVER_NAME"] === "localhost") {
 } else {
   $host = "talsprddb02.int.its.rmit.edu.au";
   $user = "e54061";
-  include("/home/eh1/e54061/.htdb_pass"); // contains just this line: $password = "RMIT1234!";
-  $database = "e54061";
+  include("/home/eh1/e54061/.htdb_pass2"); // contains just this line: $password = "RMIT1234!";
+  $database = "e54061_159009";
 }
 
 $conn = mysqli_connect($host, $user, $password, $database);
