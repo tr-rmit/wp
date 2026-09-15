@@ -1,5 +1,6 @@
 <?php 
   include('assets/includes/tools.inc');
+  include('assets/includes/db_connect.inc');
   $pageName = 'Home';
   $fileName = 'index.php';
   include_once('assets/includes/header.inc');

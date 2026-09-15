@@ -3,10 +3,17 @@
 
     /* Updated Pre Show Code generated using Gemini AI and adapted */
   // reserved variable used to track depth in new recursive preshow
+  
+  function statusToBadge($status) {
+    $status = strtolower($status);
+    $status = str_replace(' ','-',$status);
+    return $status;
+  }
+
   $PRE_SHOW_DEPTH = 0; 
   /**
    * @param mixed $item
-   * @return mixed
+   * @return mixed 
    */
   function preshow($item)
   {
