@@ -85,9 +85,9 @@ main {
 footer {
   background-color: var(--seco-gold);
   color: var(--tert-red);
-  position: fixed;
+  /* position: fixed;
   bottom: 0px;
-  z-index: 2;
+  z-index: 2; */
 }
 
 /* Gallery */

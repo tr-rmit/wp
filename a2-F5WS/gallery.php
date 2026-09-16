@@ -85,7 +85,7 @@ include_once('assets/includes/header.inc');
           // preshow($row);
           $badgeStatus = statusToBadge($row['Status']);
           echo <<<"MERCHITEM"
-      <div class="col-12 col-md-6 col-xl-4 col-xxl-3" data-status="in-stock">
+      <div class="col-12 col-md-6 col-xl-4 col-xxl-3" data-status="$badgeStatus">
         <div class="gallery-item h-100">
           <h3>{$row['Title']}</h3>
           <p><img class="img-fluid img-thumbnail gallery-img" src="assets/images/merch/{$row['Image_path']}" alt="{$row['Title']}" data-bs-toggle="modal" data-bs-target="#imageModal"></p>

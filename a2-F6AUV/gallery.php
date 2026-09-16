@@ -1,5 +1,6 @@
 <?php 
   include_once('assets/includes/tools.inc');
+  include_once('assets/includes/db_connect.inc');
   $pageTitle = 'Gallery';
   $fileName = 'gallery.php';
   include_once('assets/includes/header.inc'); 
@@ -18,6 +19,7 @@
         </select>
       </div>
       <div id="gallery" class="row p-2 mt-2">
+        <!-- hard coded examples -->
         <div class="col-12 col-md-6 col-xl-4 col-xxl-3" data-status="on-order">
           <div class="gallery-item h-100">
             <h3>Asgardian Mead Stein</h3>
@@ -74,6 +76,41 @@
             <p>$5,000 <span class="badge in-stock">In Stock</span></p>
           </div>
         </div>
+        <!-- end hard coded examples -->
+
+        <!-- database generated examples -->
+<?php  
+  // lets get some records / rows from the database
+  $sql = "SELECT * FROM merch";
+  $result = mysqli_query($conn, $sql);   
+  
+  if ($result && mysqli_num_rows($result) > 0) {
+    while ($row = mysqli_fetch_assoc($result)) {
+      // "CDATA" is the usual string to use
+      $badgeStatus = statusToBadge($row['Status']);
+      // preshow($row);
+      echo <<<"MERCHITEM"
+        <div class="col-12 col-md-6 col-xl-4 col-xxl-3" data-status="$badgeStatus">
+          <div class="gallery-item h-100">
+            <h3>{$row['Title']}</h3>
+            <p><img class="img-fluid img-thumbnail gallery-img" src="assets/images/merch/{$row['Image_path']}" alt="{$row['Title']}" data-bs-toggle="modal" data-bs-target="#imageModal"></p>
+            <h4>Description</h4>
+            <p>{$row['Description']}</p>
+            <h4>Feature</h4>
+            <p>{$row['Feature']}</p>
+            <h4>Material</h4>
+            <p>{$row['Material']}</p>
+            <h4>Price</h4>
+            <p>\${$row['Price']} <span class="badge $badgeStatus">{$row['Status']}</span></p>
+          </div>
+        </div>
+
+MERCHITEM;   
+    }
+  }
+  
+?>  
+        <!-- end database generated examples -->
 
         <!-- Only One Modal! -->
         <div class="modal fade" id="imageModal" tabindex="-1" aria-hidden="true">
