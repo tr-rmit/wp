@@ -67,7 +67,7 @@ include_once('assets/includes/header.inc');
           <h3>Jarvis Smart-Home Projector</h3>
           <p><img class="img-fluid img-thumbnail gallery-img" src="assets/images/merch/Jarvis_Smart-Home_Projector.png" alt="Eleanor Hart" data-bs-toggle="modal" data-bs-target="#imageModal"></p>
           <h4>Description</h4>
-          <p>A desktop holographic projector shaped like Tony Stark’s classic Mark II helmet core.</p>
+          <p>A desktop holographic projector shaped like Tony Stark&#39;s classic Mark II helmet core.</p>
           <h4>Feature</h4>
           <p>Projects a glowing blue AI interface onto any wall and responds to your voice with classic sarcastic Jarvis commentary while controlling your house lights.</p>
           <h4>Material</h4>
@@ -79,7 +79,7 @@ include_once('assets/includes/header.inc');
       <!-- Database items -->
 <?php // lets get some records / rows from the database
       $sql = "SELECT * FROM merch";
-      $result = mysqli_query($conn, $sql);
+      $result = mysqli_query($conn, $sql); 
       if ($result && mysqli_num_rows($result) > 0) {
         while ($row = mysqli_fetch_assoc($result)) {
           // preshow($row);
