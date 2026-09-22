@@ -41,9 +41,9 @@
           <label for="status" class="form-label">Status</label>
           <select name="status" id="status" required class="form-control w-100">
             <option>Please Select</option>
-            <option value="in-stock">In Stock</option>
-            <option value="on-order">On Order</option>
-            <option value="sold-out">Sold Out</option>
+            <option value="In Stock">In Stock</option>
+            <option value="On Order">On Order</option>
+            <option value="Sold Out">Sold Out</option>
           </select>
         </div>
         <div class="mb-3">
@@ -56,12 +56,6 @@
           <input type=submit value="Add New Merch" class="btn btn-primary">
         </div>
       </form>
-    </div>
-    <div id='debug'>
-      <h3>$_POST:</h3>
-      <?php preshow($_POST); ?>
-      <h3>$_FILES:</h3>
-      <?php preshow($_FILES); ?>
     </div>
   </main>
 

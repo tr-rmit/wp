@@ -7,6 +7,7 @@
     <h4>$_POST</h4>
     <?php preshow($_POST); ?>
   </div>
+  <script src="assets/js/main.js"></script>
 </body>
 
 </html>

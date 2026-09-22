@@ -42,9 +42,10 @@ document.addEventListener("DOMContentLoaded", function () {
   
   // If there is a merchFilter, showcase the relevant merchSpot cards. 
   if (merchFilter) {
-    merchFilter.addEventListener("onchange", function (event) {
+    merchFilter.addEventListener("change", function (event) {
+      let selected = event.target.value;
       console.log(selected); 
-      console.log(merchSpots);
+      //console.log(merchSpots);
       merchSpots.forEach((merchSpot) => {
         // console.log(selected + "|" + spot.dataset.status);
         if (selected == '' || selected == merchSpot.dataset.status)
@@ -56,7 +57,3 @@ document.addEventListener("DOMContentLoaded", function () {
   }
   
 });
-
-
-
-

@@ -122,5 +122,4 @@
     </div>
 
   </main>
-
 <?php include_once('assets/includes/footer.inc'); ?>

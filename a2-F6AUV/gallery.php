@@ -1,9 +1,9 @@
-<?php 
-  include_once('assets/includes/tools.inc');
-  include_once('assets/includes/db_connect.inc');
-  $pageTitle = 'Gallery';
+<?php
+  include('assets/includes/tools.inc');
+  include('assets/includes/db_connect.inc');
+  $pageName = 'Gallery';
   $fileName = 'gallery.php';
-  include_once('assets/includes/header.inc'); 
+  include_once('assets/includes/header.inc');
 ?>
 
   <main class="container-fluid">
@@ -18,7 +18,7 @@
         </select>
       </div>
       <div id="gallery" class="row p-2 mt-2">
-        <!-- hard coded examples -->
+        <!-- Hard coded reference items, to be deleted -->
         <div class="col-12 col-md-6 col-xl-4 col-xxl-3" data-status="on-order">
           <div class="gallery-item h-100">
             <h3>Asgardian Mead Stein</h3>
@@ -66,7 +66,7 @@
             <h3>Jarvis Smart-Home Projector</h3>
             <p><img class="img-fluid img-thumbnail gallery-img" src="assets/images/merch/Jarvis_Smart-Home_Projector.png" alt="Eleanor Hart" data-bs-toggle="modal" data-bs-target="#imageModal"></p>
             <h4>Description</h4>
-            <p>A desktop holographic projector shaped like Tony Stark’s classic Mark II helmet core.</p>
+            <p>A desktop holographic projector shaped like Tony Stark&#39;s classic Mark II helmet core.</p>
             <h4>Feature</h4>
             <p>Projects a glowing blue AI interface onto any wall and responds to your voice with classic sarcastic Jarvis commentary while controlling your house lights.</p>
             <h4>Material</h4>
@@ -75,19 +75,15 @@
             <p>$5,000 <span class="badge in-stock">In Stock</span></p>
           </div>
         </div>
-        <!-- end hard coded examples -->
-
-        <!-- database generated examples -->
-<?php  
-  // lets get some records / rows from the database
+        <!-- Database items -->
+<?php // lets get some records / rows from the database
   $sql = "SELECT * FROM merch";
-  $result = mysqli_query($conn, $sql);   
-  
+  $result = mysqli_query($conn, $sql); 
+
   if ($result && mysqli_num_rows($result) > 0) {
     while ($row = mysqli_fetch_assoc($result)) {
-      // "CDATA" is the usual string to use
-      $badgeStatus = statusToBadge($row['Status']);
       // preshow($row);
+      $badgeStatus = statusToBadge($row['Status']);
       echo <<<"MERCHITEM"
         <div class="col-12 col-md-6 col-xl-4 col-xxl-3" data-status="$badgeStatus">
           <div class="gallery-item h-100">
@@ -104,28 +100,26 @@
           </div>
         </div>
 
-MERCHITEM;   
-    }
-  }
-  
-?>  
-        <!-- end database generated examples -->
+  MERCHITEM;
+          }
+        }
+        ?>
+      </div>
 
-        <!-- Only One Modal! -->
-        <div class="modal fade" id="imageModal" tabindex="-1" aria-hidden="true">
-          <div class="modal-dialog modal-dialog-centered modal-xl">
-            <div class="modal-content w-80">
-              <div class="modal-body text-center">
-                <img id="modalImage" class="img-fluid  img-thumbnail w-100" src="assets/images/4-up.png" alt="All 4 Products">
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-              </div>
+      <!-- Only One Modal! -->
+      <div class="modal fade" id="imageModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-xl">
+          <div class="modal-content w-80">
+            <div class="modal-body text-center">
+              <img id="modalImage" class="img-fluid  img-thumbnail w-100" src="assets/images/4-up.png" alt="All 4 Products">
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </main>
 
+  </main>
 <?php include_once('assets/includes/footer.inc'); ?>
