@@ -10,8 +10,7 @@
     <div class="p-3">
       <h1>Merch Gallery</h1>
       <div>
-        <!-- Old school event listener: onchange -->
-        <select onchange="filterMerch(this.value)">
+        <select id="merchFilter">
           <option value="">All</option>
           <option value="in-stock">In Stock</option>
           <option value="on-order">On Order</option>
@@ -128,20 +127,5 @@ MERCHITEM;
       </div>
     </div>
   </main>
-  <script>
-    // This code should be moved to the script.js file and have a onchange event listener
-    function filterMerch(selected) {
-      const merchSpots = document.querySelectorAll("#gallery > div");
-      console.log(selected); //"filterMerch called"
-      console.log(merchSpots);
-        merchSpots.forEach((merchSpot) => {
-          // console.log(selected + "|" + spot.dataset.status);
-          if (selected == '' || selected == merchSpot.dataset.status)
-            merchSpot.classList.remove("deselected");
-          else 
-            merchSpot.classList.add("deselected");
-        });
-    }
-  </script>
 
 <?php include_once('assets/includes/footer.inc'); ?>

@@ -2,20 +2,25 @@
 document.addEventListener("DOMContentLoaded", function () {
   const galleryImages = document.querySelectorAll(".gallery-img");
   const modalImage = document.getElementById("modalImage");
+  const addForm = document.getElementById("addForm");
+  const merchFilter = document.getElementById("merchFilter");
+  const merchSpots = document.querySelectorAll("#gallery > div");
 
-  // Show the modal when an image is clicked
+  // If galleryImages exist, show the modal when an image is clicked
   // For each small gallery image
-  galleryImages.forEach((img) => {
-    img.addEventListener("click", function () {
-      // Update the modal image to match the clicked image
-      modalImage.src = this.src;
-      modalImage.alt = this.alt;
+  if (galleryImages) {
+    galleryImages.forEach((img) => {
+      img.addEventListener("click", function () {
+        // Update the modal image to match the clicked image
+        modalImage.src = this.src;
+        modalImage.alt = this.alt;
+      });
     });
-  });
+  }
 
-  // Form Validation
-  if (document.getElementById("uploadForm")) {
-    document.getElementById("uploadForm").addEventListener("submit", function (event) {
+  // If the add page form exists, validate the form fields
+  if (addForm) {
+    addForm.addEventListener("submit", function (event) {
       const publishedInput = document.getElementById("published");
       const errorMessage = document.getElementById("error-message");
 
@@ -34,4 +39,24 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     });
   }
+  
+  // If there is a merchFilter, showcase the relevant merchSpot cards. 
+  if (merchFilter) {
+    merchFilter.addEventListener("onchange", function (event) {
+      console.log(selected); 
+      console.log(merchSpots);
+      merchSpots.forEach((merchSpot) => {
+        // console.log(selected + "|" + spot.dataset.status);
+        if (selected == '' || selected == merchSpot.dataset.status)
+          merchSpot.classList.remove("deselected");
+        else
+          merchSpot.classList.add("deselected");
+      });
+    });
+  }
+  
 });
+
+
+
+

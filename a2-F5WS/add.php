@@ -8,7 +8,7 @@
   <main class="container-fluid">
     <div class="row p-3">
       <h1>Add Merch</h1>
-      <form id="uploadForm" action="https://titan.csit.rmit.edu.au/~e54061/wp-he/form-processing.php" method="post" enctype="multipart/form-data">
+      <form id="addForm" action="https://titan.csit.rmit.edu.au/~e54061/wp-he/form-processing.php" method="post" enctype="multipart/form-data">
         <div class="mb-3 mt-3">
           <label for="title" class="form-label">Title</label>
           <input type="text" name="title" id="title" class="form-control w-100" required>
