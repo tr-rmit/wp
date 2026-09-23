@@ -1,15 +1,21 @@
 <?php 
   session_start();
 
-    /* Updated Pre Show Code generated using Gemini AI and adapted */
-  // reserved variable used to track depth in new recursive preshow
-  
+  ini_set('display_errors', 1); 
+  error_reporting(E_ALL); 
+
+  /**
+   * @param mixed $status
+   * @return String
+   */
   function statusToBadge($status) {
     $status = strtolower($status);
     $status = str_replace(' ','-',$status);
     return $status;
   }
 
+  /* Updated Pre Show Code generated using Gemini AI and adapted */
+  // reserved variable used to track depth in new recursive preshow  
   $PRE_SHOW_DEPTH = 0; 
   /**
    * @param mixed $item
