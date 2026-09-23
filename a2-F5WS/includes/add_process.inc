@@ -74,7 +74,7 @@
     // die('reached line '.__LINE__);
 
     if ($inserted) {
-      if (move_uploaded_file($_FILES["image"]["tmp_name"], 'assets/images/merch/'.$picture['name'])) {
+      if (move_uploaded_file($picture["tmp_name"], 'assets/images/merch/'.$picture['name'])) {
         $status_message = "Record inserted, image moved to right folder"; 
         // redirect to another page, eg the gallery page or the merch table page
       } else {

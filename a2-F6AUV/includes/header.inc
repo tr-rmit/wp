@@ -26,4 +26,4 @@
     </div>
   </header>
 
-<?php include_once('assets/includes/nav.inc'); ?>
+<?php include_once('includes/nav.inc'); ?>

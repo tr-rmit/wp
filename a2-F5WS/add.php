@@ -1,11 +1,11 @@
 <?php 
-  include('assets/includes/tools.inc');
-  include('assets/includes/db_connect.inc');
+  include('includes/tools.inc');
+  include('includes/db_connect.inc');
   if ($_SERVER['REQUEST_METHOD'] == "POST")
-    include('assets/includes/add_process.inc');
+    include('includes/add_process.inc');
   $pageName = 'Add New Merch';
   $fileName = 'add.php';
-  include_once('assets/includes/header.inc');
+  include_once('includes/header.inc');
 ?>
 
   <main class="container-fluid">
@@ -76,4 +76,4 @@
     </div>
   </main>
 
-<?php include_once('assets/includes/footer.inc'); ?>  
+<?php include_once('includes/footer.inc'); ?>  

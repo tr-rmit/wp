@@ -1,9 +1,9 @@
 <?php 
-  include('assets/includes/tools.inc');
-  include('assets/includes/db_connect.inc');
+  include('includes/tools.inc');
+  include('includes/db_connect.inc');
   $pageName = 'Home';
   $fileName = 'index.php';
-  include_once('assets/includes/header.inc');
+  include_once('includes/header.inc');
 ?>
 
   <main class="container-fluid">
@@ -49,4 +49,4 @@
     </div>
   </main>
 
-<?php include_once('assets/includes/footer.inc'); ?>
+<?php include_once('includes/footer.inc'); ?>

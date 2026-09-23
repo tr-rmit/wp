@@ -1,8 +1,8 @@
 <?php
-  include_once('assets/includes/tools.inc');
+  include_once('includes/tools.inc');
   $pageTitle = 'Merch';
   $fileName = 'merch.php';
-  include_once('assets/includes/header.inc'); 
+  include_once('includes/header.inc'); 
 ?>
 
   <main class="container-fluid">
@@ -43,4 +43,4 @@
     </div>
   </main>
 
-<?php include_once('assets/includes/footer.inc'); ?>
+<?php include_once('includes/footer.inc'); ?>
