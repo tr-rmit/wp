@@ -1,14 +1,16 @@
 <?php 
   include('includes/tools.inc');
+  include('includes/db_connect.inc');  
   $pageName = 'Merch';
   $fileName = 'merch.php';
   include_once('includes/header.inc');
 ?>
-
+  
   <main class="container-fluid">
     <div class="row p-3">
       <h1>Merch</h1>
       <table class="table table-striped table-hover">
+      <!-- Static Items -->  
         <tr>
           <th>Title</th>
           <th>Description</th>
@@ -39,6 +41,27 @@
           <td>$5,000</td>
           <td>In Stock</td>
         </tr>
+        <!-- Database Sourced Items -->
+<?php         
+  // lets get some records / rows from the database
+  $sql = "SELECT * FROM merch";
+  $result = mysqli_query($conn, $sql); 
+
+  if ($result && mysqli_num_rows($result) > 0) {
+    while ($row = mysqli_fetch_assoc($result)) {
+      $formattedPrice = number_format($row['Price']);
+  echo <<<"CDATA"
+        <tr>
+          <td><a href='details.php?merchid={$row['merchid']}'>{$row['Title']}</a></td>
+          <td>{$row['Description']}</td>
+          <td>\$$formattedPrice</td>
+          <td>{$row['Status']}</td>
+        </tr>
+CDATA;
+    }
+  }
+
+?>
       </table>
     </div>
   </main>

@@ -3,6 +3,8 @@
   include('includes/db_connect.inc');
   if ($_SERVER['REQUEST_METHOD'] == "POST")
     include('includes/add_process.inc');
+  else
+    $status_message='';
   $pageName = 'Add New Merch';
   $fileName = 'add.php';
   include_once('includes/header.inc');
@@ -17,13 +19,30 @@
           <label for="title" class="form-label">Title</label>
           <input type="text" name="title" id="title" class="form-control w-100" value='<?= $title ?? '' ?>' required>
         </div>
-        <div id="title-error-message" class="alert alert-danger mt-2" role="alert"><?= $errors['title'] ?? '' ?></div>
+        <?php 
+        /*if (!empty($errors['title']))
+          alertBS('danger',$errors['title']); */ 
+          if (!empty($errors['title']))
+            echo <<<CDATA
+        <div id="title-error-message" class="alert alert-danger mt-2" role="alert">{$errors['title']}</div>
+
+CDATA;          
+        ?>
+
         
         <div class="mb-3">
           <label for="description" class="form-label">Description</label>
           <textarea rows="3" cols="50" name="description" id="description" class="form-control w-100" value='<?= $description ?? '' ?>' required></textarea>
         </div>
-        <div id="description-error-message" class="alert alert-danger mt-2" role="alert"><?= $errors['description'] ?? '' ?></div>
+        <?php 
+        /*if (!empty($errors['title']))
+          alertBS('danger',$errors['title']); */ 
+          if (!empty($errors['title']))
+            echo <<<CDATA
+        <div id="description-error-message" class="alert alert-danger mt-2" role="alert">{$errors['description']}</div>
+
+CDATA;          
+        ?>
 
         <div class="mb-3">
           <label for="feature" class="form-label">Feature</label>
