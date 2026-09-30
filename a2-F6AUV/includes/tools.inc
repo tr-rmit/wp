@@ -14,6 +14,16 @@
     return $status;
   }
 
+  function flashAlert($message, $type="info") {
+    if(empty($message))
+      $message = '';
+    echo <<<CDATA
+      <div id="error-message" class="alert alert-$type mt-2" role="alert">
+        $message
+      </div>
+  CDATA;        
+  }
+
   /* Updated Pre Show Code generated using Gemini AI and adapted */
   // reserved variable used to track depth in new recursive preshow  
   $PRE_SHOW_DEPTH = 0; 

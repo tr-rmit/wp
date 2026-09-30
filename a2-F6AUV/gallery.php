@@ -1,6 +1,6 @@
 <?php
-  include('includes/tools.inc');
-  include('includes/db_connect.inc');
+  include_once('includes/tools.inc');
+  include_once('includes/db_connect.inc');
   $pageTitle = 'Gallery';
   $fileName = 'gallery.php';
   include_once('includes/header.inc');

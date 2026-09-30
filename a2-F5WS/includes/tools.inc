@@ -1,8 +1,8 @@
-<?php 
+<?php
   session_start();
 
-  ini_set('display_errors', 1); 
-  error_reporting(E_ALL); 
+  ini_set('display_errors', 1);
+  error_reporting(E_ALL);
 
   /**
    * @param mixed $status
@@ -14,7 +14,7 @@
     return $status;
   }
 
-  function alertBS($message, $type='info') {
+  function flashAlert($message, $type='info') {
     if (is_null($message))
       $message = '';
     echo <<<"CDATA"
@@ -24,11 +24,11 @@ CDATA;
   }
 
   /* Updated Pre Show Code generated using Gemini AI and adapted */
-  // reserved variable used to track depth in new recursive preshow  
-  $PRE_SHOW_DEPTH = 0; 
+  // reserved variable used to track depth in new recursive preshow
+  $PRE_SHOW_DEPTH = 0;
   /**
    * @param mixed $item
-   * @return mixed 
+   * @return mixed
    */
   function preshow($item)
   {
@@ -51,9 +51,9 @@ CDATA;
       $item = $item ? 'true' : 'false';
     }
     // For other types (int, float, etc.), the value is returned unchanged
-    
+
     // echo "<br>debug: $PRE_SHOW_DEPTH";
-    if($PRE_SHOW_DEPTH > 0) 
+    if($PRE_SHOW_DEPTH > 0)
       return $item;
     else
       print '<pre>'.htmlspecialchars(print_r($item,true))."</pre>\n";

@@ -16,9 +16,14 @@
         <div class="mb-3 mt-3">
           <label for="title" class="form-label">Title</label>
           <input type="text" name="title" id="title" class="form-control w-100" value="<?=  $title ?? '' ?>" required>
-          <div id="error-message-title" class="alert alert-danger mt-2" role="alert">
-            <?=  $errors['title'] ?? ''  ?>
-          </div>
+<?php          
+          if (!empty($errors['title']))
+            echo <<<CDATA
+        <div id="title-error-message" class="alert alert-danger mt-2" role="alert">{$errors['title']}</div>
+CDATA;
+
+?>
+
         </div>
         <div class="mb-3">
           <label for="description" class="form-label">Description</label>

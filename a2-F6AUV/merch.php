@@ -1,5 +1,6 @@
 <?php
   include_once('includes/tools.inc');
+  include_once('includes/db_connect.inc');
   $pageTitle = 'Merch';
   $fileName = 'merch.php';
   include_once('includes/header.inc'); 
@@ -15,6 +16,7 @@
           <th>Price</th>
           <th>Status</th>
         </tr>
+        <!-- Hard coded rows -->  
         <tr>
           <td><a href='#'>Asgardian Mead Stein</a></td>
           <td>A heavy, Viking-style drinking horn and stein combo etched with runes of Odin.</td>
@@ -39,6 +41,27 @@
           <td>$5,000</td>
           <td>In Stock</td>
         </tr>
+        <!-- Dynamic from database rows -->  
+<?php         
+  $sql = "SELECT * FROM merch";
+  $result = mysqli_query($conn, $sql); 
+
+  if ($result && mysqli_num_rows($result) > 0) {
+    while ($row = mysqli_fetch_assoc($result)) {
+      // preshow($row);
+      $formattedPrice = statusToBadge($row['Price']);
+      echo <<<"MERCHITEM"
+        <tr>
+          <td><a href='details.php?merchid={$row['merchid']}'>{$row['Title']}</a></td>
+          <td>{$row['Description']}</td>
+          <td>\$$formattedPrice</td>
+          <td>{$row['Status']}</td>
+        </tr>
+MERCHITEM;
+
+    }
+  }
+?>
       </table>
     </div>
   </main>
