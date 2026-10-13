@@ -75,23 +75,25 @@
 
     if ($inserted) {
       if (move_uploaded_file($picture["tmp_name"], 'assets/images/merch/'.$picture['name'])) {
+        $_SESSION['success'] =  "Record inserted, image moved to right folder"; 
         $status_message = "Record inserted, image moved to right folder"; 
         // redirect to another page, eg the gallery page or the merch table page
       } else {
+        $_SESSION['warning'] = "Record inserted, but there was a problem saving the image to disk"; 
         $status_message = "Record inserted, but there was a problem saving the image to disk"; 
       }
     } else {
+      $_SESSION['failure'] = "Record not inserted, image not saved to disk";
       $status_message = "Record not inserted, image not saved to disk"; 
     }
 
 
   } else {
     // stay on this page
+    $_SESSION['failure'] = "Errors were detected, see details below.";
+    // simpler error reporting block: $_SESSION['failure'] = implode('<br>\n', $errors);
   }
 
   preshow($errors);
-  
-
-
 
 ?>

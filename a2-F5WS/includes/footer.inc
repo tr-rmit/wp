@@ -4,6 +4,8 @@
     </div>
   </footer>
   <div id=debug>
+    <h4>$_SESSION</h4>
+    <?php preshow($_SESSION); ?>    
     <h4>$_POST</h4>
     <?php preshow($_POST); ?>
     <h4>$_GET</h4>

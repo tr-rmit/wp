@@ -1,10 +1,12 @@
 <?php 
   include('includes/tools.inc');
+  if(!isset($_SESSION['userid'])) 
+    header('Location: login.php');
   include('includes/db_connect.inc');
+  $status_message='';
   if ($_SERVER['REQUEST_METHOD'] == "POST")
     include('includes/add_process.inc');
-  else
-    $status_message='';
+    
   $pageName = 'Add New Merch';
   $fileName = 'add.php';
   include_once('includes/header.inc');
@@ -13,6 +15,7 @@
   <main class="container-fluid">
     <div class="row p-3">
       <h1>Add Merch</h1>
+      <?php showFlashAlerts(); ?>
       <div><?=  $status_message ?></div>  <!-- todo: style this message -->
       <form id="addForm" action="add.php" method="post" enctype="multipart/form-data">
         <div class="mb-3 mt-3">

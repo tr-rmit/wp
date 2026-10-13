@@ -7,6 +7,7 @@
 ?>
 
   <main class="container-fluid">
+    <?php showFlashAlerts(); ?>
     <div class="row">
       <div id="demo" class="carousel slide mb-3 col-lg-6" data-bs-ride="carousel">
         <!-- Indicators -->
