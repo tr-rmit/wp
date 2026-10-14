@@ -21,6 +21,8 @@ if ($password === "") {
 if ($password !== $confirm_password) {
   $errors[] = "Passwords do not match.";
 }
+
+if(count($errors) == 0) {
 // Hash the Password
 $password_hash = password_hash($password, PASSWORD_DEFAULT);
 // Prepared Insert
@@ -37,7 +39,7 @@ $bind = mysqli_stmt_bind_param(
   $email,
   $password_hash
 );
-try { 
+try {
   if ($stmt && $bind && mysqli_stmt_execute($stmt)) {
     $_SESSION['success'] = "Welcome to Bookverse, ".$username." we're too lazy to log you so you'll have to do it";
     header("Location: login.php");
@@ -50,3 +52,4 @@ try {
 }
 
 // Redirect After Successful Registration
+}

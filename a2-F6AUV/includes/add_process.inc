@@ -3,9 +3,7 @@
     
   foreach($_POST as $name => $value) {
     $$name = htmlspecialchars(trim($value));
-    echo "$name => $value<br>\n";
   }
-  preshow($_FILES);
 
   $picture = $_FILES['picture'];
 

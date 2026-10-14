@@ -1,5 +1,7 @@
 <?php
-  session_start();
+  if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+  }
 
   ini_set('display_errors', 1); 
   error_reporting(E_ALL); 
@@ -22,6 +24,29 @@
         $message
       </div>
   CDATA;        
+  }
+
+  function showFlashAlerts()
+  {
+    if (isset($_SESSION['success'])) {
+      flashAlert($_SESSION['success'], 'success');
+      unset($_SESSION['success']);
+    } else {
+      //echo('success is unset');
+    }
+    if (isset($_SESSION['failure'])) {
+      flashAlert($_SESSION['failure'], 'danger');
+      unset($_SESSION['failure']);
+      echo('failure was set');
+    } else {
+      //echo('failure is unset');
+    }
+    if (isset($_SESSION['warning'])) {
+      flashAlert($_SESSION['warning'], 'warning');
+      unset($_SESSION['warning']);
+    } else {
+      //echo('warning is unset');
+    }
   }
 
   /* Updated Pre Show Code generated using Gemini AI and adapted */
