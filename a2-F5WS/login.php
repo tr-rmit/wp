@@ -14,7 +14,6 @@ include_once('includes/header.inc');
 <main class="container my-4">
   <h1>Login</h1>
   <?php showFlashAlerts(); ?>
-  <div><?=  $status_message ?></div>  <!-- todo: style this message -->
   <form action="login.php" method="post" class="mt-4">
     <div class="mb-3">
       <label for="login" class="form-label">Username or Email</label>

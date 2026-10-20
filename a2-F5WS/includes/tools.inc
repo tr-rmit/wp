@@ -33,7 +33,7 @@ function showFlashAlerts()
   if (isset($_SESSION['failure'])) {
     flashAlert($_SESSION['failure'], 'danger');
     unset($_SESSION['failure']);
-    echo('failure was set');
+    // echo('failure was set');
   } else {
     //echo('failure is unset');
   }

@@ -9,14 +9,16 @@
   <main class="container-fluid">
     <div class="row p-3">
       <h1>Merch</h1>
+      <?php showFlashAlerts(); ?>
       <table class="table table-striped table-hover">
-      <!-- Static Items -->  
         <tr>
           <th>Title</th>
           <th>Description</th>
           <th>Price</th>
           <th>Status</th>
+          <th>Actions</th>
         </tr>
+      <!-- Static Items 
         <tr>
           <td><a href='#'>Asgardian Mead Stein</a></td>
           <td>A heavy, Viking-style drinking horn and stein combo etched with runes of Odin.</td>
@@ -40,7 +42,7 @@
           <td>A desktop holographic projector shaped like Tony Stark’s classic Mark II helmet core.</td>
           <td>$5,000</td>
           <td>In Stock</td>
-        </tr>
+        </tr>-->  
         <!-- Database Sourced Items -->
 <?php         
   // lets get some records / rows from the database
@@ -50,12 +52,16 @@
   if ($result && mysqli_num_rows($result) > 0) {
     while ($row = mysqli_fetch_assoc($result)) {
       $formattedPrice = number_format($row['Price']);
+      $tdEditDelete = '';
+      if($_SESSION['userid'] == $row['userid'])
+        $tdEditDelete = '<a class="btn btn-primary" href="edit.php?merchid=' . $row['merchid'] . '">Edit</a> <button type="button" class="btn btn-danger">Delete</button>';
   echo <<<"CDATA"
         <tr>
           <td><a href='details.php?merchid={$row['merchid']}'>{$row['Title']}</a></td>
           <td>{$row['Description']}</td>
           <td>\$$formattedPrice</td>
           <td>{$row['Status']}</td>
+          <td>$tdEditDelete</td>
         </tr>
 CDATA;
     }
