@@ -9,14 +9,16 @@
   <main class="container-fluid">
     <div class="row p-3">
       <h1>Merch</h1>
+      <?php showFlashAlerts(); ?>
       <table class="table table-striped table-hover">
         <tr>
           <th>Title</th>
           <th>Description</th>
           <th>Price</th>
           <th>Status</th>
+          <th>Actions</th>
         </tr>
-        <!-- Hard coded rows -->  
+        <!-- Hard coded rows
         <tr>
           <td><a href='#'>Asgardian Mead Stein</a></td>
           <td>A heavy, Viking-style drinking horn and stein combo etched with runes of Odin.</td>
@@ -40,7 +42,7 @@
           <td>A desktop holographic projector shaped like Tony Stark’s classic Mark II helmet core.</td>
           <td>$5,000</td>
           <td>In Stock</td>
-        </tr>
+        </tr> -->  
         <!-- Dynamic from database rows -->  
 <?php         
   $sql = "SELECT * FROM merch";
@@ -50,12 +52,16 @@
     while ($row = mysqli_fetch_assoc($result)) {
       // preshow($row);
       $formattedPrice = statusToBadge($row['Price']);
+      $tdEditDelete = '';
+      if(isset($_SESSION['userid']) && $_SESSION['userid'] == $row['userid'] ?? 0)
+        $tdEditDelete = '<a class="btn btn-primary" href="edit.php?merchid=' . $row['merchid'] . '">Edit</a> <button type="button" class="btn btn-danger">Delete</button>';      
       echo <<<"MERCHITEM"
         <tr>
           <td><a href='details.php?merchid={$row['merchid']}'>{$row['Title']}</a></td>
           <td>{$row['Description']}</td>
           <td>\$$formattedPrice</td>
           <td>{$row['Status']}</td>
+          <td>$tdEditDelete</td>
         </tr>
 MERCHITEM;
 

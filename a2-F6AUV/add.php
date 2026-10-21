@@ -1,5 +1,9 @@
 <?php 
   include_once('includes/tools.inc');
+  if(!isset($_SESSION['userid'])) { 
+    $_SESSION['failure'] = 'You need to log in before you can add records.';
+    header('Location: login.php');
+  }
   include_once('includes/db_connect.inc');
   if ($_SERVER['REQUEST_METHOD'] == 'POST') 
     include_once('includes/add_process.inc');

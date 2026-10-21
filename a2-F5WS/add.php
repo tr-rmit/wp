@@ -1,12 +1,12 @@
-<?php 
+<?php
   include('includes/tools.inc');
-  if(!isset($_SESSION['userid'])) 
+  if(!isset($_SESSION['userid']))
     header('Location: login.php');
   include('includes/db_connect.inc');
   $status_message='';
   if ($_SERVER['REQUEST_METHOD'] == "POST")
     include('includes/add_process.inc');
-    
+
   $pageName = 'Add New Merch';
   $fileName = 'add.php';
   include_once('includes/header.inc');
@@ -16,35 +16,34 @@
     <div class="row p-3">
       <h1>Add Merch</h1>
       <?php showFlashAlerts(); ?>
-      <div><?=  $status_message ?></div>  <!-- todo: style this message -->
       <form id="addForm" action="add.php" method="post" enctype="multipart/form-data">
         <div class="mb-3 mt-3">
           <label for="title" class="form-label">Title</label>
           <input type="text" name="title" id="title" class="form-control w-100" value='<?= $title ?? '' ?>' required>
         </div>
-        <?php 
+        <?php
         /*if (!empty($errors['title']))
-          alertBS('danger',$errors['title']); */ 
+          alertBS('danger',$errors['title']); */
           if (!empty($errors['title']))
             echo <<<CDATA
         <div id="title-error-message" class="alert alert-danger mt-2" role="alert">{$errors['title']}</div>
 
-CDATA;          
+CDATA;
         ?>
 
-        
+
         <div class="mb-3">
           <label for="description" class="form-label">Description</label>
           <textarea rows="3" cols="50" name="description" id="description" class="form-control w-100" value='<?= $description ?? '' ?>' required></textarea>
         </div>
-        <?php 
+        <?php
         /*if (!empty($errors['title']))
-          alertBS('danger',$errors['title']); */ 
+          alertBS('danger',$errors['title']); */
           if (!empty($errors['title']))
             echo <<<CDATA
         <div id="description-error-message" class="alert alert-danger mt-2" role="alert">{$errors['description']}</div>
 
-CDATA;          
+CDATA;
         ?>
 
         <div class="mb-3">
@@ -52,16 +51,16 @@ CDATA;
           <textarea rows="3" cols="50" name="feature" id="feature" class="form-control w-100" value='<?= $feature ?? '' ?>' required></textarea>
         </div>
         <div id="feature-error-message" class="alert alert-danger mt-2" role="alert"><?= $errors['feature'] ?? '' ?></div>
-        
+
         <div class="mb-3">
           <label for="material" class="form-label">Material</label>
           <textarea rows="3" cols="50" name="material" id="material" class="form-control w-100" value='<?= $material ?? '' ?>' required></textarea>
         </div>
         <div id="material-error-message" class="alert alert-danger mt-2" role="alert"><?= $errors['material'] ?? '' ?></div>
-        
+
         <div class="mb-3">
           <label for="material" class="form-label">Price</label>
-          <div class="input-group">                  
+          <div class="input-group">
             <div class="input-group-prepend">
               <span class="input-group-text">$</span>
             </div>
@@ -72,7 +71,7 @@ CDATA;
           </div>
         </div>
         <div id="price-error-message" class="alert alert-danger mt-2" role="alert"><?= $errors['price'] ?? '' ?></div>
-        
+
         <div class="mb-3">
           <label for="status" class="form-label">Status</label>
           <select name="status" id="status" required class="form-control w-100">
@@ -83,12 +82,12 @@ CDATA;
           </select>
         </div>
         <div id="title-error-message" class="alert alert-danger mt-2" role="alert"><?= $errors['status'] ?? '' ?></div>
-        
+
         <div class="mb-3">
           <label for="picture" class="form-label">Picture</label>
           <input type="file" name="picture" id="picture" class="form-control w-100">
         </div>
-        
+
         <!-- Bootstrap-styled hidden error message -->
         <div id="error-message" class="alert alert-danger mt-2 d-none" role="alert">You did a bad thing!</div>
         <div class="mb-3">
@@ -98,4 +97,4 @@ CDATA;
     </div>
   </main>
 
-<?php include_once('includes/footer.inc'); ?>  
+<?php include_once('includes/footer.inc'); ?>
