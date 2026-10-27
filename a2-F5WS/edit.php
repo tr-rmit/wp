@@ -53,8 +53,6 @@
   $stmt->close();
 
   if ($_SERVER['REQUEST_METHOD'] == "POST") {
-    $dir_upload_images = __DIR__ . '/assets/images/merch/';
-    //echo 'hey' . $dir_upload_images;
     include('includes/edit_process.inc');
   }
     
@@ -152,7 +150,7 @@ CDATA;
         <!-- Bootstrap-styled hidden error message -->
         <div id="error-message" class="alert alert-danger mt-2 d-none" role="alert">You did a bad thing!</div>
         <div class="mb-3">
-          <input type=submit value="Edit New Merch" class="btn btn-primary">
+          <input type=submit value="Update Merch" class="btn btn-primary">
         </div>
       </form>
     </div>

@@ -1,4 +1,5 @@
-<?php 
+<?php
+
   include('includes/tools.inc');
   include('includes/db_connect.inc');  
   $pageName = 'Merch';
@@ -54,7 +55,9 @@
       $formattedPrice = number_format($row['Price']);
       $tdEditDelete = '';
       if($_SESSION['userid'] == $row['userid'])
-        $tdEditDelete = '<a class="btn btn-primary" href="edit.php?merchid=' . $row['merchid'] . '">Edit</a> <button type="button" class="btn btn-danger">Delete</button>';
+        $tdEditDelete = <<<"EDDATA"
+<a class="btn btn-primary" href="edit.php?merchid={$row['merchid']}">Edit</a> <div class="btn btn-danger delete" data-id="{$row['merchid']}" data-detail="{$row['Title']}" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</div>
+EDDATA;
   echo <<<"CDATA"
         <tr>
           <td><a href='details.php?merchid={$row['merchid']}'>{$row['Title']}</a></td>
@@ -63,6 +66,7 @@
           <td>{$row['Status']}</td>
           <td>$tdEditDelete</td>
         </tr>
+
 CDATA;
     }
   }
@@ -71,5 +75,22 @@ CDATA;
       </table>
     </div>
   </main>
+
+  <!-- Delete Modal >-->
+  <div class="modal fade" id="deleteModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-md">
+      <div class="modal-content">
+        <div id="delete-header" class="modal-header"></div>
+        <div id="delete-detail" class="modal-body text-center">Are you sure you wish to delete this merch?</div>
+        <div class="modal-footer">
+          <form method="post" action="delete.php">
+            <button id="delete-link" name="merchid" value="#" class="btn btn-danger">Delete</a>
+          </form>
+          
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+        </div>
+      </div>
+    </div>
+  </div>
 
 <?php include_once('includes/footer.inc'); ?>
