@@ -18,7 +18,7 @@
         </select>
       </div>
       <div id="gallery" class="row p-2 mt-2">
-        <!-- Hard coded reference items, to be deleted -->
+        <!-- Hard coded reference items, to be deleted 
         <div class="col-12 col-md-6 col-xl-4 col-xxl-3" data-status="on-order">
           <div class="gallery-item h-100">
             <h3>Asgardian Mead Stein</h3>
@@ -74,7 +74,7 @@
             <h4>Price</h4>
             <p>$5,000 <span class="badge in-stock">In Stock</span></p>
           </div>
-        </div>
+        </div> -->
         <!-- Database items -->
 <?php // lets get some records / rows from the database
   $sql = "SELECT * FROM merch";

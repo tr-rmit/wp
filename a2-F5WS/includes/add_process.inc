@@ -53,11 +53,12 @@
   if (count($errors) == 0) {
     // do something useful and redirect
 
-    $sql = "INSERT INTO merch (Title, Description, Image_path, Feature, Material, Price, Status) VALUES (?,?,?,?,?,?,?)";
+    $sql = "INSERT INTO merch (userid, Title, Description, Image_path, Feature, Material, Price, Status) VALUES (?,?,?,?,?,?,?,?)";
  
     $stmt = mysqli_prepare($conn, $sql);
     // dibs bids 
-    mysqli_stmt_bind_param($stmt,"sssssis",
+    mysqli_stmt_bind_param($stmt,"isssssis",
+      $_SESSION['userid'],
       $title,
       $description,
       $picture['name'], // todo: append a uniqid() string on the end of the name but not the extension, eg namefdf7df6d.png

@@ -6,7 +6,7 @@
   2. If there is a new image and it is broken we should not update the record
   3. If there is a new image and it is good we should update the record
 */
-
+  //die($dir_upload_images);
   $picture = $_FILES['picture'];
   $new_image_path = $old_image_path;
   $imageIsGood = false;
@@ -70,7 +70,7 @@
   
     // only move file if a new one exists
     if ($imageIsGood) {   
-      if (move_uploaded_file($picture['temp'], 'assets/images/merch/' . $new_image_path)) {
+      if (move_uploaded_file($picture['tmp_name'], 'assets/images/merch/' . $new_image_path)) {
         $_SESSION['success'] .= "<br>Record Updated, image moved to merch images folder.";
       } else {
         $_SESSION['warning'] = "Record Updated but image not moved to merch images folder.";

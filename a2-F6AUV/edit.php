@@ -52,8 +52,11 @@
   }
   $stmt->close();
 
-  if ($_SERVER['REQUEST_METHOD'] == 'POST') 
+  if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $dir_upload_images = __DIR__ . '/assets/images/merch/';
+    //echo 'hey' . $dir_upload_images;
     include_once('includes/edit_process.inc');
+  }
   $pageTitle = 'Edit Existing Merch';
   $fileName = 'edit.php';
   include_once('includes/header.inc'); 

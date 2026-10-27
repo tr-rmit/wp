@@ -1,5 +1,7 @@
 <?php
-  
+  //preshow($_SERVER);
+
+  //die('hey'.$dir_upload_images);
   $picture = $_FILES['picture'];
   $new_image_path = $old_image_path;
   /*
@@ -63,7 +65,8 @@
     
     // only move file if a new one exists
     if (!empty(trim($picture['name']))) { 
-      if (move_uploaded_file($picture['temp'], 'assets/images/merch/' . $new_image_path)) {
+      // die('assets/images/merch/' . $new_image_path);
+      if (move_uploaded_file($picture['tmp_name'], 'assets/images/merch/' . $new_image_path)) {
         $_SESSION['success'] .= "<br>Record Updated, image moved to merch images folder.";
       } else {
         $_SESSION['warning'] = "Record Updated but image not moved to merch images folder.";
