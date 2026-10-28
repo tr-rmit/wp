@@ -32,6 +32,11 @@ body {
   min-height: 100vh;
 }
 
+/* striped table style override */
+td, th {
+  color: var(--tert-red) !important; 
+}
+
 h1, h2, h3, h4, h5, h6, nav, label, button {
   font-family: "Righteous", sans-serif;
   color: var(--seco-red);
@@ -130,6 +135,17 @@ footer {
   &.on-order {
     background-color: var(--seco-red);
   }
-
 }
+
+/* modal text overrides */
+
+#delete-header {
+  color: white;
+  font-weight: bold;
+  font-size: 150%;
+}
+#delete-detail {
+  color: white;
+}
+
 

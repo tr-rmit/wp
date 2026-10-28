@@ -5,6 +5,9 @@ document.addEventListener("DOMContentLoaded", function () {
   const addForm = document.getElementById("addForm");
   const merchFilter = document.getElementById("merchFilter");
   const merchSpots = document.querySelectorAll("#gallery > div");
+  const deleteBtns = document.querySelectorAll(".btn.btn-danger.delete");
+  const deleteHeader = document.getElementById("delete-header");
+  const deleteLink = document.getElementById("delete-link");
 
   // If galleryImages exist, show the modal when an image is clicked
   // For each small gallery image
@@ -55,6 +58,16 @@ document.addEventListener("DOMContentLoaded", function () {
       });
     });
   }
+
+    // If there are delete buttons 
+  deleteBtns?.forEach((delBtn) => {
+    delBtn.addEventListener("click", function () {
+      console.log(this.dataset.detail);
+      // Update the link to match the clicked delete button
+      deleteHeader.innerHTML = this.dataset.detail;
+      deleteLink.value = this.dataset.id;
+    });
+  });
   
 });
 
