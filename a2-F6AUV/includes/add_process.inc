@@ -1,43 +1,64 @@
-<h3>POST</h3>
-<?php
-    
+<?php 
+  // Initial debug
+  // preshow($_POST);
   foreach($_POST as $name => $value) {
-    $$name = htmlspecialchars(trim($value));
+    $value = trim(htmlspecialchars($value));
+    echo($name . ' => ' . $value . "<br>\n");
+    $$name = $value;
   }
-
+  //echo $title;
+  $status_message = 'Initally Unset';
   $picture = $_FILES['picture'];
+  preshow($picture);
 
-  $status_message = 'Initially Unset'; // later set this to ''
-  $errors = [];
+  $errors = []; // new Array();
 
+  
   if (strlen($title)<10)
     $errors['title'] = 'Title is too short';
-  if (strlen($title)<10)
+  else 
+    //$errors['title'] = '';
+
+  if (strlen($description)<10)
     $errors['description'] = 'Description is too short';
-  if (strlen($title)<10)
+  else 
+    //$errors['description'] = '';
+  
+  if (strlen($feature)<10)
     $errors['feature'] = 'Feature is too short';
+  else 
+    //$errors['feature'] = '';
+  
   if (strlen($material)<10)
-    $errors['material'] = 'Material is too short';
-  if(!filter_var($price, FILTER_VALIDATE_INT) || $price<10)
-    $errors['price'] = 'Price needs to be an integer greater than $10';
+    $errors['material'] = 'Material is too short'; 
+  else 
+    //$errors['material'] = '';
+  
+  if (!filter_var($price, FILTER_VALIDATE_INT) || $price < 0)
+    $errors['price'] = 'Price must be a positive integer'; 
+  else 
+    //$errors['price'] = '';
 
   if ($status != "Sold Out" && $status != "On Order" && $status != "In Stock")
     $errors['status'] = $status . ' is not an option try not hacking this select box'; 
+  else 
+    //$errors['status'] = '';
 
-  if(empty(htmlspecialchars(trim($picture['name']))) || !preg_match("#^image/#",$picture['type']) || $picture['error'] !=0 || $picture['size']<10 || $picture['size']>10000000)
-    $errors['picture'] = 'Could not process this image'; // very generic, think about more messages done by multiple checks
+  if (empty(trim($picture['name'])) || !preg_match("#^image/#",$picture['type']) || $picture['error'] !=0 || $picture['size']<10 || $picture['size']>10000000 )
+    $errors['picture'] = "Something is wrong with the picture";
+  else 
+    //$errors['picture'] = '';
 
-  preshow($errors);
 
-  if(count($errors) == 0) {
-    // do something useful with the POSTed data
+  if (count($errors) == 0) {
+    // do something useful and redirect
 
-    $sql = "INSERT INTO merch (Title, Description, Image_path, Feature, Material, Price, Status) VALUES (?,?,?,?,?,?,?)";
-
+    $sql = "INSERT INTO merch (userid, Title, Description, Image_path, Feature, Material, Price, Status) VALUES (?,?,?,?,?,?,?,?)";
+ 
     $stmt = mysqli_prepare($conn, $sql);
-
-    // dibs or bids
-    mysqli_stmt_bind_param($stmt,"sssssis",
+    // dibs bids 
+    mysqli_stmt_bind_param($stmt,"isssssis",
+      $_SESSION['userid'],
       $title,
       $description,
       $picture['name'], // todo: append a uniqid() string on the end of the name but not the extension, eg namefdf7df6d.png
@@ -45,19 +66,35 @@
       $material,
       $price,
       $status
-    );    
-    
+    );
+
+    // echo 'reached line '.__LINE__;
+
     $inserted = mysqli_stmt_execute($stmt);
 
+    // die('reached line '.__LINE__);
+
     if ($inserted) {
-      if (move_uploaded_file($picture['tmp_name'], 'assets/images/merch/'.$picture['name']))
-        $status_message = 'Record inserted, image moved to the right folder';
+      if (move_uploaded_file($picture["tmp_name"], 'assets/images/merch/'.$picture['name'])) {
+        $_SESSION['success'] =  "Record inserted, image moved to right folder"; 
+        $status_message = "Record inserted, image moved to right folder"; 
         // redirect to another page, eg the gallery page or the merch table page
-      else 
-        $status_message = 'Record inserted, but unable to move image to the right folder';
+      } else {
+        $_SESSION['warning'] = "Record inserted, but there was a problem saving the image to disk"; 
+        $status_message = "Record inserted, but there was a problem saving the image to disk"; 
+      }
     } else {
-      $status_message = 'Record NOT inserted, unwilling to even try to move image to the right folder';
+      $_SESSION['failure'] = "Record not inserted, image not saved to disk";
+      $status_message = "Record not inserted, image not saved to disk"; 
     }
 
+
+  } else {
+    // stay on this page
+    $_SESSION['failure'] = "Errors were detected, see details below.";
+    // simpler error reporting block: $_SESSION['failure'] = implode('<br>\n', $errors);
   }
+
+  preshow($errors);
+
 ?>
